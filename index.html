@@ -5,7 +5,14 @@
     <meta charset="utf-8" />
     <title>AngularJS Plunker</title>
 
-    <link data-require="bootstrap-css@*" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <script>document.write('<base href="' + document.location + '" />');</script>
+<!--      <script src="bower_components/angular/angular.js" ></script>
+     <script  src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+     <script  src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+ -->
+ <link data-require="bootstrap-css@*" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
 
     <script>document.write('<base href="' + document.location + '" />');</script>
     <script data-require="angular.js@1.1.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js" data-semver="1.1.5"></script>
@@ -50,13 +57,12 @@
           <li><a href="#">Link</a></li>
           
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" ng-controller="DropdownCtrl">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li><a href="#">Separated link</a></li>
-              <li><a href="#">One more separated link</a></li>
+            <a href="#" class="dropdown-toggle" ng-controller="DropdownCtrl">Dropdown 1<b class="caret"></b></a>
+            <ul  class="dropdown-menu">
+             <div ng-repeat="item in items">
+             {{item}}
+              <li ><a href="#">{{ item }}</a></li>
+             </div>
             </ul>
           </li>
           
@@ -70,7 +76,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Link</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>

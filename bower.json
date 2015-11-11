@@ -1,0 +1,29 @@
+{
+  "name": "hrcdangular",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kpierce8/mysite",
+  "authors": [
+    "Ken Pierce <kpierce8@gmail.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-leaflet-directive": "~0.8.8",
+    "angular-simple-logger": "~0.1.4",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "angular": "~1.4.7"
+  },
+  "install": {
+    "path": "bower_libs"
+  }
+}

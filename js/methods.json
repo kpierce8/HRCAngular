@@ -1,0 +1,42 @@
+[
+	{
+	"project": "Image Processing",
+	"description": "The primary image processing steps consisted of mosaicing individual images, clipping mosaics to analysis area boundaries and generating indices from the raw band values. ",
+	"path": "#imageProcessing"
+	},
+	{
+	"project": "Image Segmentation",
+	"description": "Image segmentation is the process of generating homogenous polygons from multi-band pixel data ",
+	"path": "#segmentation"
+	},
+	{
+	"project": "Land Cover Modeling",
+	"description": "Explain the basis of lc modeling here",
+	"path": "#landCoverModeling"
+	},
+	{
+	"project": "Training Data",
+	"description": "The initial traiing data consists of a detailed search for 2-300 change polygons and an evaluation of about 500 randomly selected polygons.",
+	"path": "#trainingData"
+	},
+	{
+	"project": "Stratified Sampling",
+	"description": "An initial model is created to label polygons as more like change or more linke non-change. A large sample of about 2500 polygons is drawn from each group to create the full model.",
+	"path": "#stratifiedSampling"
+	},
+	{
+	"project": "Statistical Modeling",
+	"description": "The predictive model is developed using the Random Forests algorithm.",
+	"path": "#statisticalModeling"
+	},
+	{
+	"project": "Commission Assessment",
+	"description": "A length commission assessment is performed as outlined in the accuracy assessment paper.",
+	"path": "#commissionAssessment"
+	},
+	{
+	"project": "Omission Assessment",
+	"description": "An additional round of verificationis done on a 1% sample of non-change polygons.",
+	"path": "#omissionAssessment"
+	}
+]

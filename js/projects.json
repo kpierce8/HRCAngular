@@ -1,0 +1,42 @@
+[
+	{
+	"project": "Initial Pilot",
+	"fundSource":"Salmon Recovery Funding Board",
+	"timePeriod":"2006-2009",
+	"grantYear":2009,
+	"awardAmount": 115000,
+	"description": "Our initial HRCD grant was provided by the Salmon Recovery Funding Board as part of their monitoring component to assess the feasability of using the NAIP data for change detection and/or land cover mapping. For this project we mapped four WRIAs, 3, 7, 8 and 15. High commission rates for the initial models for WRIA 3 led to the adoption of the 'checking all commission' procedure. The protocol for this assessment only considered polygons with a change prediction rate greater than 0.5 for the commission assessment." 
+	},
+	{
+	"project": "Wetland Change Mapping",
+	"fundSource":"WA Dept. of Ecology",
+	"timePeriod":"2006-2009",
+	"grantYear":2010,
+	"awardAmount": 35000,
+	"description": "In 2010 we mapped change in three additional WRIAs, two for the 2006-2009 period and one using county data for a 2001-2006 comparison. For 2006-2009 we mapped WRIA 13, the Deschutes which lies mostly in Thurston Co. and WRIA 1, the Nooksack, which is mostly in Whatcom Co. The 2001-2006 map was done for Kitsap Co. which is a subset of WRIA 15 which comprises the north and eastern shore of hood canal." 
+	},
+	{
+	"project": "State of the Salmon",
+	"fundSource":"Gov. Salmon Recovery Office",
+	"timePeriod":"2009-2011",
+	"grantYear":2012,
+	"awardAmount": 85000,
+	"description": "In 2012 the first WRIAs outside of Puget Sound were mapped for the State of the Salmon report. We mapped one WRIA in each of the eight WA Salmon Recovery regions." 
+	},
+	{
+	"project": "Metro Vancouver Change",
+	"fundSource":"Environment Canada",
+	"timePeriod":"2006-2011",
+	"grantYear":2012,
+	"awardAmount": 17000,
+	"description": "In 2012 we mapped change in the Metro Vancouver area of British Columbia using two different high resolution imagery data sets, both captured during winter/spring months. The lack of green vegetation made change detection difficult. The data from 2006 was from early spring with some trees starting leaf out. The 2009 image was during winter. This timing shift caused some areas to appear as if they had lost vegetation. "
+	},
+	{
+	"project": "Phase 1 Completion",
+	"fundSource":"Dept. of Ecology/NEP Grant",
+	"timePeriod":"2006-2009",
+	"grantYear":2013,
+	"awardAmount": 95000,
+	"description": "In 2013, EPA through the Lead organization grants provided funding to complete the 2006-2009 change map. Six of the 19 Puget Sound WRIAs had previously been mapped as part of the SRFB and DOE Wetland Change grants. This grant provided funding for mapping the remaining 13 WRIAs. At the beginning of this project the Landscape Spatial Analytics team reassessed the information captured during the accuracy assessment phase, recognizing the opportunity to broaden our data reporting during the photo interpretation task."
+	}
+]

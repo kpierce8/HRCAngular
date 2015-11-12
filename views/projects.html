@@ -1,0 +1,12 @@
+<div class="row">
+		<ul id="projects">
+		<div class="col-md-4 col-sm-6" ng-repeat="proj in projectList">
+			<h3>{{proj.project}}</h3>
+			<p><em>Grant initially awarded: {{proj.grantYear}}</em></p>
+			<p><em>Analysis time interval: {{proj.timePeriod}}</em></p>
+			<p><em>Funding source: {{proj.fundSource}}, {{proj.awardAmount | currency:"USD$"}}</em></p>
+			<p>{{proj.description}}</p>
+		</div>
+
+		</ul>
+	</div>

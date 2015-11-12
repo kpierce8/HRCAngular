@@ -1,0 +1,273 @@
+﻿/* -----------------------------------
+Site:       Site name
+CSS author: Your name
+Updated:	Date here
+Updated by: Date here
+----------------------------------- */
+/* -----------------------------------
+simple reset
+----------------------------------- */
+html, body, ul, ol, li, form, fieldset, legend {
+	margin: 0;
+	padding: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;
+}
+fieldset, img {
+	border: 0;
+}
+legend {
+	color: #000;
+}
+input, textarea, select, button {
+	font-size: 110%;
+	line-height: 1.1;
+	font-family: helvetica, arial, sans-serif;
+	padding-top: 2px;
+	padding-bottom:2px;
+}
+button {
+	width: auto;
+	overflow: visible;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	vertical-align: top;
+	font-weight: normal;
+}
+li {
+	list-style: none;
+}
+abbr, acronym {
+	border-bottom: .1em dotted;
+	cursor: help;
+}
+sup {
+	vertical-align: text-top;
+}
+sub {
+	vertical-align: text-bottom;
+}
+pre, code {
+	font-family: "Courier New", monospace, serif;
+	font-size: 100%;
+	line-height: 1.2;
+}
+/* -----------------------------------
+elements
+----------------------------------- */
+body {
+
+	color: #ccc;
+	background: #fff;
+	font: 90%/1 arial, helvetica, sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0 0 .5em;
+	color: #000;
+}
+h1 {
+	font-size: 200%;
+	color: #55ff55;
+}
+h2 {
+	font-size: 180%;
+}
+h3 {
+	font-size: 160%;
+}
+h4 {
+	font-size: 140%;
+}
+h5 {
+	font-size: 120%;
+}
+h6 {
+	font-size: 100%;
+}
+p {
+	padding: 1em;
+	line-height: 1.4;
+	color: #0000FF;
+}
+a:link {
+	color: #0f3163;
+	margin-bottom: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+a:visited {
+	color: #04214b;
+}
+a:focus {
+	color: #000;
+	outline: thin dotted;
+}
+a:hover {
+	color: #129911;
+}
+a:active {
+	color: #f00;
+}
+/*.content ol {
+	line-height: 1.4;
+	padding: 0 0 1.5em 3px;*/
+}
+/* .section-nav ul li
+{ 
+	padding: 0 0 0 20px;
+	background: url('images/bullet.gif') no-repeat 0 .3em;
+} */
+/* -----------------------------------
+layout
+----------------------------------- */
+.container {
+	width: 960px;
+}
+.theBody {
+	padding: 20px 0 0;
+	width: 580px;	
+	margin-left: 10px;
+}
+
+.content {
+	background: #fdc086;
+	background-color: #FFFFFF;
+	clear: both;
+	float:left;
+}
+
+.sidebar {
+	float: right;
+}
+.footer {
+	clear: both;
+}
+.home a:visited {
+	color: black;
+}
+/* -----------------------------------
+header
+----------------------------------- */
+
+.header {
+	background: #669977;
+	height:85px;	
+}
+
+/* -----------------------------------
+search-form
+----------------------------------- */
+
+.search-form {
+	float: right;
+	width: 200px;
+	margin: 5px;
+}
+
+/* -----------------------------------
+primary-nav
+----------------------------------- */
+
+#primaryNavList {
+	width: 75%;
+	background: #99cc22;
+	height: 40px;
+	border-bottom: 1px solid #696;
+
+}
+#primaryNavList li {
+	margin: 0;
+	padding: 0 0 5px 5px;
+	display: inline;
+	list-style: none;
+	color: black;
+}
+#primaryNavList li a {
+	float: left;
+	line-height: 14px;
+	font-weight: bold;
+	padding: 10px 10px 16px 6px;
+	text-decoration: none;
+	color: blue;
+}
+#primaryNavList li a:active, #primaryNavList li a:hover {
+	border-bottom: 4px solid #696;
+	padding-bottom: 0px;
+	color: #363;
+}
+
+#primaryNavList li a:hover {
+	color: #696;
+	border-bottom: 4px solid #696;
+	padding: 10px 10px 12px 6px;
+
+}
+
+/* -----------------------------------
+section-nav
+----------------------------------- */
+.section-nav {
+	width: 250px;
+	float: left;
+	background: yellow;
+	padding: 5px;
+	border: medium aqua;
+}
+.section-nav ul {
+	line-height: 1.4;
+	padding: 0 0 1.5em 40px;
+}
+
+
+/* -----------------------------------
+myPosts
+----------------------------------- */
+
+#posts {
+	background: #cc4;
+	min-width: 100px;
+	min-height: 100px;
+}
+
+/* -----------------------------------
+footer
+----------------------------------- */
+/* -----------------------------------
+box
+----------------------------------- */
+/* -----------------------------------
+colors
+----------------------------------- */
+/* -----------------------------------
+classes
+----------------------------------- */
+.structural {
+	position: absolute;
+	left: -500em;
+}
+.gutter {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+#me {
+	padding: 20px;
+	float: right;
+	margin-left: 20px;
+}
+
+#myaddress {
+	clear: both;
+	float: left;
+	width: 300px;
+	background: #5555ff;
+}
+
+.proj {
+	margin-left: 10px;
+}

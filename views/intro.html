@@ -1,0 +1,36 @@
+<h3>Project background</h3>
+
+<p>
+	In 2006, the first set of statewide 1-m, aerial imagery was made available by the National Agriculture Imagery Program (NAIP). In 2009 a second set was aquired, providing the potential to analyze land-cover change at high resolutions statewide. However, statewide 1-m imagery is very large and difficult to work with over big areas. With this possibility in mind, the Salmon Recovery Funding Board (SRFB) provided an initial grant to scientists in the Habitat Program at WDFW to assess the feasability of using high resolution aerial imagery for land-cover change mapping. Due to the many difficulties inherit in working with high-resolution data (discussed in detail in the methods and techniques), WDFW researchers focused their analysis on change specifically with an interest in mapping urbanization and forestry events. Funding from the SRFB was predictaed on the idea of tracking riparian and shoreline conditions, to whatever extent feasible. Many issues with riparian corridors and shoreline vegetation have location specific boundaries on the order of 50-200 ft from a stream or waterbody. In order to accurately map consitions in these areas, spatial accuracy was considered the highest priority when compared with metrics such as species composition or stand characteristics.
+</p>
+
+<h3>Why does WDFW track Land-Use/Land-Cover change?</h3>
+<p>
+	While populations of people, fish and wildlife expand and shift, the land area of the state of Washington does not. Therefore, as the designated stewards of fish and wildlife for the people of the State of Washington, WDFW must help Washington maintain core habitat for the non-human Washingtonians in our care. WDFW advises local entities on land-use planning issues in regards to fish and wildlife habitat and in that respect we need an up to date accounting of habitats and the land-cover and uses around them and how they are changing.
+</p>
+
+<h3>Mapping Land-Use/Land-Cover</h3>
+<p>
+	Land cover mapping and land-use are measured in multiple ways including on the ground surveys, tax and census data, aerial imagery and satellite remote sensing.
+</p>
+
+
+
+<h3>WDFW's LULC mapping in a nutshell</h3>
+<p>
+	The high resolution change detection project is initially designed to map
+	change events with land cover as a secondary product.
+</p>
+
+
+<div class="row">
+		<ul id="projects">
+		<div class="col-md-4 col-sm-6" ng-repeat="proj in projectList">
+			<li >{{proj.project}}</li>
+			<p><em>Grant initially awarded: {{proj.grantYear}}</em></p>
+			<p><em>Analysis time interval: {{proj.timePeriod}}</em></p>
+			<p><em>Funding source: {{proj.fundSource}}, {{proj.awardAmount | currency:"USD$"}}</em></p>
+		</div>
+
+		</ul>
+	</div>

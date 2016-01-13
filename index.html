@@ -10,12 +10,16 @@
 
   <link href="css/styles.css" media="all" rel="stylesheet" type="text/css" /> 
   <link rel="stylesheet" href="bower_components/leaflet/leaflet.css" />
+  <link rel="stylesheet" href="https://js.arcgis.com/3.15/esri/css/esri.css">
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route.js"></script>
   <script src="bower_components/leaflet/leaflet-src.js"></script>
   <script src="bower_components/angular-simple-logger/angular-simple-logger.js"></script>
   <script src="bower_components/angular-leaflet-directive/angular-leaflet-directive.js"></script>
   <script src="bower_components/jquery/jquery.js"></script>
+  <script>window.dojoConfig = { packages: [{ name: 'local', location: '/js' }] };</script>
+
+  <script src="https://js.arcgis.com/3.15/"></script>
   <script src="app.js"></script>
 
 
@@ -33,6 +37,17 @@
     })();
   </script>
 
+<script>
+      var map;
+
+      require(["esri/map", "dojo/domReady!"], function(Map) {
+        map = new Map("mapDiv", {
+          basemap: "topo",  //For full list of pre-defined basemaps, navigate to http://arcg.is/1JVo6Wd
+          center: [-122.45, 37.75], // longitude, latitude
+          zoom: 13
+        });
+      });
+</script>
 </head>
 
 
@@ -64,6 +79,7 @@
           <li class="active"><a href="#intro">Intro <span class="sr-only">(current)</span></a></li>
           <li><a href="#methods">Methods</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#data">Data</a></li>
         </ul>
         
         
@@ -79,7 +95,7 @@
 </div>  
 
 <div class="footer">
-  <p>Copyright © 2011-2015 Frantic Goose Software </p>
+  <p>Copyright © 2015 Ken Pierce </p>
   <div class="footer-decoration"></div>
 </div>
 

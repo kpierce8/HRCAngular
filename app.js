@@ -37,6 +37,9 @@ app.config(function($routeProvider) {
 	.when('/segmentation', {
 			templateUrl: '/methods/segmentation.html'
 		})
+	.when('/data', {
+			templateUrl: '/data/data.html'
+		})
 	.otherwise('/intro');
 });
 

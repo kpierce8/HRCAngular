@@ -1,5 +1,5 @@
 .bgimage {
-	background-image: url("../sunset.png");
+	background-image: url("../UrbanBanner1.png");
 	background-position: center center;
 	background-size: cover;
 	height: 200px;
@@ -11,3 +11,10 @@
         margin: 0;
         padding: 0;
       }
+
+.droptitle {
+	font-size: 3em;
+	padding-top: 143px;
+	padding-bottom: 0px;
+	color: #EEE;
+}

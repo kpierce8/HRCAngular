@@ -5,7 +5,7 @@
 	"timePeriod":"2006-2009",
 	"grantYear":2009,
 	"awardAmount": 115000,
-	"description": "Our initial HRCD grant was provided by the Salmon Recovery Funding Board as part of their monitoring component to assess the feasability of using the NAIP data for change detection and/or land cover mapping. For this project we mapped four WRIAs, 3, 7, 8 and 15. High commission rates for the initial models for WRIA 3 led to the adoption of the 'checking all commission' procedure. The protocol for this assessment only considered polygons with a change prediction rate greater than 0.5 for the commission assessment." 
+	"description": "Our initial HRCD grant was provided by the Salmon Recovery Funding Board as part of their monitoring component to assess the feasibility of using the NAIP data for change detection and/or land cover mapping. For this project we mapped four WRIAs: 3, 7, 8 and 15. High commission rates for the initial models for WRIA 3 led to the adoption of the 'checking all commission' procedure. The protocol for this assessment only considered polygons with a change prediction rate greater than 0.5 for the commission assessment." 
 	},
 	{
 	"project": "Wetland Change Mapping",
@@ -13,7 +13,7 @@
 	"timePeriod":"2006-2009",
 	"grantYear":2010,
 	"awardAmount": 35000,
-	"description": "In 2010 we mapped change in three additional WRIAs, two for the 2006-2009 period and one using county data for a 2001-2006 comparison. For 2006-2009 we mapped WRIA 13, the Deschutes which lies mostly in Thurston Co. and WRIA 1, the Nooksack, which is mostly in Whatcom Co. The 2001-2006 map was done for Kitsap Co. which is a subset of WRIA 15 which comprises the north and eastern shore of hood canal." 
+	"description": "In 2010 we mapped change in three additional WRIAs: two for the 2006-2009 period and one using county data for a 2001-2006 comparison. For 2006-2009, we mapped WRIA 13, the Deschutes which lies mostly in Thurston Co. and WRIA 1, the Nooksack, which is mostly in Whatcom Co. The 2001-2006 map was done for Kitsap Co., a subset of WRIA 15, which comprises the north and eastern shore of hood canal." 
 	},
 	{
 	"project": "State of the Salmon",
@@ -21,7 +21,7 @@
 	"timePeriod":"2009-2011",
 	"grantYear":2012,
 	"awardAmount": 85000,
-	"description": "In 2012 the first WRIAs outside of Puget Sound were mapped for the State of the Salmon report. We mapped one WRIA in each of the eight WA Salmon Recovery regions." 
+	"description": "In 2012, the first WRIAs outside of Puget Sound were mapped for the State of the Salmon report. We mapped one WRIA in each of the eight WA Salmon Recovery regions." 
 	},
 	{
 	"project": "Metro Vancouver Change",
@@ -29,7 +29,7 @@
 	"timePeriod":"2006-2011",
 	"grantYear":2012,
 	"awardAmount": 17000,
-	"description": "In 2012 we mapped change in the Metro Vancouver area of British Columbia using two different high resolution imagery data sets, both captured during winter/spring months. The lack of green vegetation made change detection difficult. The data from 2006 was from early spring with some trees starting leaf out. The 2009 image was during winter. This timing shift caused some areas to appear as if they had lost vegetation. "
+	"description": "In 2012, we mapped change in the Metro Vancouver area of British Columbia using two different high resolution imagery data sets captured during winter/spring months. The lack of green vegetation made change detection difficult. The data from 2006 was from early spring with some trees starting leaf out. The 2009 image was during winter. This timing shift caused some areas to appear as if they had lost vegetation. "
 	},
 	{
 	"project": "Phase 1 Completion",
@@ -37,6 +37,30 @@
 	"timePeriod":"2006-2009",
 	"grantYear":2013,
 	"awardAmount": 95000,
-	"description": "In 2013, EPA through the Lead organization grants provided funding to complete the 2006-2009 change map. Six of the 19 Puget Sound WRIAs had previously been mapped as part of the SRFB and DOE Wetland Change grants. This grant provided funding for mapping the remaining 13 WRIAs. At the beginning of this project the Landscape Spatial Analytics team reassessed the information captured during the accuracy assessment phase, recognizing the opportunity to broaden our data reporting during the photo interpretation task."
+	"description": "In 2013, the EPA (through the Lead organization grants) provided funding to complete the 2006-2009 change map. Six of the nineteen Puget Sound WRIAs had previously been mapped as part of the SRFB and DOE Wetland Change grants. This grant provided funding for mapping the remaining 13 WRIAs. At the beginning of this project, the Landscape Spatial Analytics team reassessed the information captured during the accuracy assessment phase, recognizing the opportunity to broaden our data reporting during the photo interpretation task."
+	},
+	{
+	"project": "Phase 2",
+	"fundSource":"Dept. of Ecology/NEP Grant",
+	"timePeriod":"2009-2011",
+	"grantYear":2013,
+	"awardAmount": 280000,
+	"description": "In 2013, the EPA (through the Lead organization grants) provided funding for the 2009-2011 change map. This grant provided funding for mapping all 19 Puget Sound WRIAs. The overall accuracy of the detection was increased due to improvements in the modeling procedure and the existence of the infra-red spectral band in both the 2009 and 2011 images. This grant also provided funds for a one-year Land-Cover Outreach Coordinator."
+	},
+	{
+	"project": "Phase 3",
+	"fundSource":"Dept. of Ecology/NEP Grant",
+	"timePeriod":"2011-2013",
+	"grantYear":2014,
+	"awardAmount": 200000,
+	"description": "In 2014, the EPA (through the Lead organization grants) provided funding for the 2011-2013 change map. This grant provided funding for mapping all 19 Puget Sound WRIAs."
+	},
+	{
+	"project": "Phase 4",
+	"fundSource":"Puget Sound Partnership",
+	"timePeriod":"2011-2013 (50% funding level)",
+	"grantYear":2015,
+	"awardAmount": 125000,
+	"description": "In 2015, the Puget Sound Partnership through the Puget Sound Ecosystem Monitoring Program's Vital Sign funding gap analysis, secured partial funding for the 2013-2015 change detection layer. These funds are also designed to fund the development of land cover data from the NAIP imagery. Additional funding is being sought through the NEP grant process."
 	}
 ]

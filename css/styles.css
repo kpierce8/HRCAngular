@@ -1,6 +1,6 @@
 .bgimage {
 	background-image: url("../UrbanBanner1.png");
-	background-position: center center;
+	background-position: top center;
 	background-size: cover;
 	height: 200px;
 }

@@ -2,7 +2,7 @@
 <html ng-app="hrcdApp">
 <head>
 
-  <title>HRCD Angular</title>
+  <title>High resolution Change Detection</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,8 +43,8 @@
       require(["esri/map", "dojo/domReady!"], function(Map) {
         map = new Map("mapDiv", {
           basemap: "topo",  //For full list of pre-defined basemaps, navigate to http://arcg.is/1JVo6Wd
-          center: [-122.45, 37.75], // longitude, latitude
-          zoom: 13
+          center: [-122.45, 47.75], // longitude, latitude
+          zoom: 6
         });
       });
 </script>
@@ -76,7 +76,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#intro">Intro <span class="sr-only">(current)</span></a></li>
+          <li><a href="#intro">Intro</a></li>
           <li><a href="#methods">Methods</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#data">Data</a></li>

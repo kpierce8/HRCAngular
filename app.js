@@ -1,50 +1,10 @@
-var app = angular.module('hrcdApp', ['ngRoute']);
+angular.module('hrcdApp', [ 'ngRoute', 'hrcdRoutes']);
 
-app.config(function($routeProvider) {
-	$routeProvider.when('/intro', {
-		controller: 'MainCtrl',
-		templateUrl: '/views/intro.html'
-	})
-	.when('/projects', {
-		controller: 'projCtrl',
-		templateUrl: '/views/projects.html'
-	})
-	.when('/methods', {
-		controller: 'methodCtrl',
-		templateUrl: '/views/methods.html'
-	})
-	.when('/imageProcessing', {
-			templateUrl: '/methods/image_processing.html'
-		})
-	.when('/landCoverModeling', {
-			templateUrl: '/methods/land_cover_modeling.html'
-		})
-	.when('/trainingData', {
-			templateUrl: '/methods/training_data.html'
-		})
-	.when('/stratifiedSampling', {
-			templateUrl: '/methods/stratified_sampling.html'
-		})
-	.when('/statisticalModeling', {
-			templateUrl: '/methods/statistical_modeling.html'
-		})
-	.when('/commissionAssessment', {
-			templateUrl: '/methods/commission_assessment.html'
-		})
-	.when('/omissionAssessment', {
-			templateUrl: '/methods/omission_assessment.html'
-		})
-	.when('/segmentation', {
-			templateUrl: '/methods/segmentation.html'
-		})
-	.when('/data', {
-			templateUrl: '/data/data.html'
-		})
-	.otherwise('/intro');
-});
+//require('./routes/routes');
 
 
-app.controller('MainCtrl', function($scope, $http) {
+
+angular.module('hrcdApp').controller('MainCtrl', function($scope, $http) {
 	$scope.name = 'Ken Pierce';
 
 	$http.get('./js/projects.json').success(function(data){
@@ -52,7 +12,7 @@ app.controller('MainCtrl', function($scope, $http) {
 	});
 });
 
-app.controller('DropdownCtrl', function($scope) {
+angular.module('hrcdApp').controller('DropdownCtrl', function($scope) {
 
 	$scope.items = [
 	"Choice 1",
@@ -61,14 +21,14 @@ app.controller('DropdownCtrl', function($scope) {
 	];
 });
 
-app.controller('projCtrl', function($scope, $http) {
+angular.module('hrcdApp').controller('projCtrl', function($scope, $http) {
 
 	$http.get('./js/projects.json').success(function(data){
 		$scope.projectList = data;
 	});
 });
 
-app.controller('methodCtrl', function($scope, $http) {
+angular.module('hrcdApp').controller('methodCtrl', function($scope, $http) {
 	$scope.name = 'Ken Pierce';
 
 	$http.get('./js/methods.json').success(function(data){

@@ -28,6 +28,9 @@ angular.module('hrcdApp').controller('projCtrl', function($scope, $http) {
 	});
 });
 
+
+
+
 angular.module('hrcdApp').controller('methodCtrl', function($scope, $http) {
 	$scope.name = 'Ken Pierce';
 
@@ -38,3 +41,41 @@ angular.module('hrcdApp').controller('methodCtrl', function($scope, $http) {
 		
 	});
 });
+
+
+angular.module('hrcdApp').controller('dataCtrl', function($scope, $http) {
+	$scope.name = 'Ken Pierce';
+	
+	$scope.zoom = 16
+	var map;
+
+      require(["esri/map", "services/mapService", "dojo/domReady!"], function(Map, mapService) {
+        _that = this;
+        map = new Map("mapDiv", {
+          basemap: "topo",  //For full list of pre-defined basemaps, navigate to http://arcg.is/1JVo6Wd
+          center: [-122.8965, 47.03676], // longitude, latitude
+          zoom: $scope.zoom
+        });
+      });
+
+$scope.map = map
+
+});
+
+angular.module('hrcdApp').directive('esriMap', function () {
+    return {
+        restrict: 'EA',
+        controller: 'MapController',
+        link: function (scope, element, attrs, ctrl) {
+            ctrl.init(element);
+        }
+    };
+});
+
+
+
+
+
+
+
+ 

@@ -39,6 +39,7 @@ angular.module('hrcdRoutes', ['ngRoute'])
 			templateUrl: '/methods/segmentation.html'
 		})
 	.when('/data', {
+		    controller: 'dataCtrl',
 			templateUrl: '/data/data.html'
 		})
 	.otherwise('/intro');

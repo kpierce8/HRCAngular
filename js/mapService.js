@@ -20,14 +20,14 @@ define([
 
 
 			var hrcdLayer = new FeatureLayer(HRCD_URL, {
-				id: 'Census',
+				id: 'hrcd0911',
 				outFields: ['*']
 			});
 
 			var renderer = new SimpleRenderer(symbolUtil.renderSymbol());
 
 			hrcdLayer.setRenderer(renderer);
-
+			console.log("Ran the service");
 
 	layers.push(requestLayer);
 	layers.push(hrcdLayer);

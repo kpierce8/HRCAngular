@@ -2,7 +2,7 @@
 /*jshint laxcomma:true*/
 (function(){
 	'use strict';
-
+	console.log("run.js");
 	var pathRX = new RegExp(/\/[^\/]+$/)
 	, locationPath = location.pathname.replace(pathRX, '/');
 
@@ -27,7 +27,6 @@
 		}, {
 			name: 'app',
 			location: locationPath + 'js',
-			main: 'main'
 		}]
 
 	}, ['app']);

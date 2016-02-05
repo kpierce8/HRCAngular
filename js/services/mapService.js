@@ -12,11 +12,11 @@ define([
 
 			var layers = [];
 
-			var	requestLayer = new FeatureLayer(REQUEST_URL, {
-				id: 'testTrees',
-				mode: FeatureLayer.MODE_ONDEMAND,
-				outFields: ['*']
-			});
+			// var	requestLayer = new FeatureLayer(REQUEST_URL, {
+			// 	id: 'testTrees',
+			// 	mode: FeatureLayer.MODE_ONDEMAND,
+			// 	outFields: ['*']
+			// });
 
 
 			var hrcdLayer = new FeatureLayer(HRCD_URL, {
@@ -29,7 +29,7 @@ define([
 			hrcdLayer.setRenderer(renderer);
 
 
-	layers.push(requestLayer);
+	//layers.push(requestLayer);
 	layers.push(hrcdLayer);
 	return layers;
 	}

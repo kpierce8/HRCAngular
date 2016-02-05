@@ -1,7 +1,5 @@
 angular.module('hrcdApp', [ 'ngRoute', 'hrcdRoutes']);
 
-//require('./routes/routes');
-
 
 
 angular.module('hrcdApp').controller('MainCtrl', function($scope, $http) {
@@ -29,42 +27,34 @@ angular.module('hrcdApp').controller('projCtrl', function($scope, $http) {
 });
 
 
-
-
-angular.module('hrcdApp').controller('methodCtrl', function($scope, $http) {
-	$scope.name = 'Ken Pierce';
-
-	$http.get('./js/methods.json').success(function(data){
-		$scope.methodList = data;
-
-
-		
-	});
-});
-
-
 angular.module('hrcdApp').controller('dataCtrl', function($scope, $http) {
 	$scope.name = 'Ken Pierce';
 	
 	$scope.zoom = 16
 	var map;
-	// var layers;
- //      require(["esri/map", "services/mapService", "dojo/domReady!"], function(Map, mapService) {
- //        map = new Map("mapDiv", {
- //          basemap: "topo",  //For full list of pre-defined basemaps, navigate to http://arcg.is/1JVo6Wd
- //          center: [-122.8965, 47.03676], // longitude, latitude
- //          zoom: $scope.zoom
- //        });
- //        layers = mapService.loadServices();
- //    	map.addLayers([layers]);
- //    		}
- //        );
 
-      
+ require([
+	'controllers/appcontroller',
+	'services/mapService',
+	'dojo/domReady!'
+	], function(appCtrl, mapService) {
+		appCtrl.init({
+			elem: 'mapDiv',
+			mapOptions: {
+				basemap: 'gray',
+				center: [-122.8961, 47.0366],
+				zoom: 12
+			},
+			layers: mapService.loadServices()
+		});
+	});
+
+console.debug("main ran");     
 
 $scope.map = map
 
 });
+
 
 /*angular.module('hrcdApp').directive('esriMap', function () {
     return {

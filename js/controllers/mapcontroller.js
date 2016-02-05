@@ -8,8 +8,7 @@ define([
 		return declare(null, {
 			map: null,
 			options: {},
-
-			constructor: function(options) {
+				constructor: function(options) {
 				this.options = lang.mixin(this.options, options);
 				},
 
@@ -24,4 +23,7 @@ define([
 			return deferred.promise;
 			}
 		});
+
 	});
+
+console.debug("mapcontroller ran");

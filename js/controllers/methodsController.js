@@ -4,7 +4,5 @@ angular.module('hrcdApp').controller('methodCtrl', function($scope, $http) {
 	$http.get('./js/methods.json').success(function(data){
 		$scope.methodList = data;
 
-
-		
 	});
 });

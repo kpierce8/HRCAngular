@@ -1,8 +1,10 @@
 define([
 	'esri/layers/FeatureLayer',
 	'esri/renderers/SimpleRenderer',
+	"esri/dijit/Popup", 
+	"esri/dijit/PopupTemplate",
 	'utils/symbolUtil']
-	, function(FeatureLayer, SimpleRenderer, symbolUtil) {
+	, function(FeatureLayer, SimpleRenderer, Popup, PopupTemplate, symbolUtil) {
 		function _loadServices(config){
 
 		
@@ -18,11 +20,23 @@ define([
 			// 	outFields: ['*']
 			// });
 
+var template = new PopupTemplate({
+          title: "from Arc Popup Page",
+          description: "{WRIAnumber} : {ChangeAgentName}",
+          fieldInfos: [{ //define field infos so we can specify an alias
+            fieldName: "WRIA",
+            label: "Entrants"
+          }]
+        });
+
 
 			var hrcdLayer = new FeatureLayer(HRCD_URL, {
 				id: 'Census',
-				outFields: ['*']
+				outFields: ['*'],
+				infoTemplate: template
 			});
+
+ 		
 
 			var renderer = new SimpleRenderer(symbolUtil.renderSymbol());
 

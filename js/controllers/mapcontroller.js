@@ -20,6 +20,8 @@ define([
 			this.map = new Map(this.options.elem, this.options.mapOptions);
 			on.once(this.map, 'layers-add-result', layersAdded);
 			this.map.addLayers(this.options.layers);
+			
+
 			return deferred.promise;
 			}
 		});

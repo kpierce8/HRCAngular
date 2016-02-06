@@ -22,9 +22,9 @@ define([
 
 var template = new PopupTemplate({
           title: "from Arc Popup Page",
-          description: "{WRIAnumber} : {ChangeAgentName}",
+          description: "{WRIAnumber} : {ChangeAgentName} \n Plus the size was {AreaAcres}",
           fieldInfos: [{ //define field infos so we can specify an alias
-            fieldName: "WRIA",
+            fieldName: "WRIAnumber",
             label: "Entrants"
           }]
         });
@@ -56,3 +56,23 @@ var template = new PopupTemplate({
 	});
 
 // From the manning arc js book
+/*
+OBJECTID ( type: esriFieldTypeOID , alias: OBJECTID )
+WRIAnumber ( type: esriFieldTypeInteger , alias: WRIA number )
+LandCover06ClassCode ( type: esriFieldTypeInteger , alias: 2006 Land Cover Classification code )
+LandCover06ClassName ( type: esriFieldTypeString , alias: 2006 Land Cover Classification name , length: 45 )
+ChangeAgentCode ( type: esriFieldTypeInteger , alias: Change Agent code )
+ChangeAgentName ( type: esriFieldTypeString , alias: Change Agent name , length: 20 )
+TotalChangePercent ( type: esriFieldTypeDouble , alias: Total Change (percent) )
+TreeDecreasePercent ( type: esriFieldTypeDouble , alias: Tree Decrease (percent) )
+ImperviousIncreasePercent ( type: esriFieldTypeDouble , alias: Impervious Increase (percent) )
+SemiperviousIncreasePercent ( type: esriFieldTypeDouble , alias: Semi-pervious Increase (percent) )
+StartYear ( type: esriFieldTypeInteger , alias: Start Year )
+EndYear ( type: esriFieldTypeInteger , alias: End Year )
+AreaAcres ( type: esriFieldTypeDouble , alias: Area (acres) )
+ElevationFeet ( type: esriFieldTypeDouble , alias: Elevation (feet) )
+Phase1IDNumber ( type: esriFieldTypeString , alias: Phase 1 Identification Number , length: 15 )
+Shape ( type: esriFieldTypeGeometry , alias: Shape )
+Shape.STArea() ( type: esriFieldTypeDouble , alias: Shape.STArea() )
+Shape.STLength() ( type: esriFieldTypeDouble , alias: Shape.STLength() )
+*/

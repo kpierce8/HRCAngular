@@ -1,10 +1,12 @@
 define([
+	'dojo/on',
+	'dojo/dom',
 	'esri/layers/FeatureLayer',
 	'esri/renderers/SimpleRenderer',
 	"esri/dijit/Popup", 
 	"esri/dijit/PopupTemplate",
 	'utils/symbolUtil']
-	, function(FeatureLayer, SimpleRenderer, Popup, PopupTemplate, symbolUtil) {
+	, function(on, dom, FeatureLayer, SimpleRenderer, Popup, PopupTemplate, symbolUtil) {
 		function _loadServices(config){
 
 		
@@ -20,7 +22,7 @@ define([
 			// 	outFields: ['*']
 			// });
 
-var template = new PopupTemplate({
+		var template = new PopupTemplate({
           title: "from Arc Popup Page",
           description: "{WRIAnumber} : {ChangeAgentName} \n Plus the size was {AreaAcres}",
           fieldInfos: [{ //define field infos so we can specify an alias
@@ -31,18 +33,25 @@ var template = new PopupTemplate({
 
 
 			var hrcdLayer = new FeatureLayer(HRCD_URL, {
-				id: 'Census',
+				id: 'hrcd',
 				outFields: ['*'],
 				infoTemplate: template
 			});
 
- 		
+ 			
 
 			var renderer = new SimpleRenderer(symbolUtil.renderSymbol());
 
 			hrcdLayer.setRenderer(renderer);
 
+			on(dom.byId('changeAgent'), 'change', function(e){
+			var changeAgent = e.target.value;
+			console.log('changeAgent value is ' + changeAgent);
+			if(changeAgent.length > 0) {
+				hrcdLayer.setDefinitionExpression('ChangeAgentCode > ' + changeAgent);
+			}
 
+		});
 	//layers.push(requestLayer);
 	layers.push(hrcdLayer);
 	return layers;
@@ -57,6 +66,13 @@ var template = new PopupTemplate({
 
 // From the manning arc js book
 /*
+Webpages for reference
+https://developers.arcgis.com/javascript/jsapi/popuptemplate.html#
+
+https://developers.arcgis.com/javascript/jshelp/intro_formatinfowindow.html
+
+
+HRCD Field information
 OBJECTID ( type: esriFieldTypeOID , alias: OBJECTID )
 WRIAnumber ( type: esriFieldTypeInteger , alias: WRIA number )
 LandCover06ClassCode ( type: esriFieldTypeInteger , alias: 2006 Land Cover Classification code )

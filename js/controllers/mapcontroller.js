@@ -10,6 +10,7 @@ define([
 			options: {},
 				constructor: function(options) {
 				this.options = lang.mixin(this.options, options);
+				console.log("from map controller options", options);
 				},
 
 			load: function() {

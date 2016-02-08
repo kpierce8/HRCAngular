@@ -8,15 +8,16 @@ angular.module('hrcdApp').controller('dataCtrl', ['$scope', '$http', function($s
 	'controllers/appcontroller',
 	'services/mapService',
 	"esri/dijit/Popup", 
-
-	 "dojo/dom-class", "dojo/dom-construct",
-	 "esri/symbols/SimpleFillSymbol", "esri/Color",
+	 "dojo/dom-class", 
+	 "dojo/dom-construct",
+	 "esri/symbols/SimpleFillSymbol", 
+	 "esri/Color",
 	'dojo/domReady!'
 	], 
 
 	function(appCtrl, mapService, Popup, domClass, domConstruct, SimpleFillSymbol, Color) {
 	that = this;
-	var fill = new SimpleFillSymbol("solid", null, new Color("#A4CE67"));
+	var fill = new SimpleFillSymbol("solid", null, new Color("#11CE67"));
 	var popup = new Popup({
             fillSymbol: fill,
             titleInBody: false
@@ -35,12 +36,11 @@ angular.module('hrcdApp').controller('dataCtrl', ['$scope', '$http', function($s
 	$scope.test2 = "test2data";
 	//$scope.test = appCtrl.mapCtrl.basemap;
 	
-
+	console.debug("data controller ran", appCtrl);     
 	});
 
-$scope.test3 = "test3";
-console.debug("data controller ran");     
 
+$scope.test3 = "test3";
 $scope.map = map
 
 }]);

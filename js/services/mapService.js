@@ -12,7 +12,12 @@ define([
 		
 			var REQUEST_URL = 'http://services.arcgis.com/rcya3vExsaVBGUDp/arcgis/rest/services/testTrees/FeatureServer/0'
    			var HRCD_URL = 'http://gispublic.dfw.wa.gov/arcgis/rest/services/ApplicationServices/PugetSoundHighResolutionChangeDetection/MapServer/1'
-			
+			var wa_countyURL = 'https://services.arcgis.com/jsIt88o09Q0r1j8h/arcgis/rest/services/StateBoundary/FeatureServer/0/query?outFields=*&where=&geometry={"xmin":-15181111.166244071,"ymin":5623514.765600957,"xmax":-11717596.540587086,"ymax":6357310.237138454,"spatialReference":{"wkid":102100}}'
+
+			var ugaURL = 'https://services.arcgis.com/6lCKYNJLvwTXqrmp/arcgis/rest/services/Urban_Growth_Areas/FeatureServer/0/query?outFields=*&where=1%3D1'
+
+			var wriaURL = 'https://services.arcgis.com/6lCKYNJLvwTXqrmp/arcgis/rest/services/WAECY_WRIA/FeatureServer/0/query?outFields=*&where=1%3D1'
+
 
 			var layers = [];
 
@@ -22,7 +27,7 @@ define([
 			// 	outFields: ['*']
 			// });
 
-		var template = new PopupTemplate({
+		var hrcdTemplate = new PopupTemplate({
           title: "from Arc Popup Page",
           description: "{WRIAnumber} : {ChangeAgentName} \n Plus the size was {AreaAcres}",
           fieldInfos: [{ //define field infos so we can specify an alias
@@ -35,10 +40,14 @@ define([
 			var hrcdLayer = new FeatureLayer(HRCD_URL, {
 				id: 'hrcd',
 				outFields: ['*'],
-				infoTemplate: template
+				infoTemplate: hrcdTemplate
 			});
 
- 			
+ 			var ugaLayer = new FeatureLayer(ugaURL, {
+ 				id: 'uga',
+ 				outFields: ['*'],
+ 				visible: false
+ 			});
 
 			var renderer = new SimpleRenderer(symbolUtil.renderSymbol());
 
@@ -57,6 +66,7 @@ define([
 		
 	//layers.push(requestLayer);
 	layers.push(hrcdLayer);
+	layers.push(ugaLayer);
 	return layers;
 	}
 

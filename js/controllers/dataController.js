@@ -1,7 +1,7 @@
 angular.module('hrcdApp').controller('dataCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.name = 'Ken Pierce';
 	
-	$scope.zoom = 16;
+	$scope.zoom = 14;
 	var map;
 
  require([
@@ -16,7 +16,7 @@ angular.module('hrcdApp').controller('dataCtrl', ['$scope', '$http', function($s
 	], 
 
 	function(appCtrl, mapService, Popup, domClass, domConstruct, SimpleFillSymbol, Color) {
-	that = this;
+
 	var fill = new SimpleFillSymbol("solid", null, new Color("#11CE67"));
 	var popup = new Popup({
             fillSymbol: fill,
@@ -41,7 +41,8 @@ angular.module('hrcdApp').controller('dataCtrl', ['$scope', '$http', function($s
 
 
 $scope.test3 = "test3";
-$scope.map = map
+
+
 
 }]);
 

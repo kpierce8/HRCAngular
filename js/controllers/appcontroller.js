@@ -23,21 +23,23 @@ define([
 			 //THIS IS THE PLACE FOR MAP CUSTOMIZATION??
 
 		//Next three functions from page33,34 in manning book
-		var markerSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10, null, new Color([50,150,100]));
+		//var markerSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10, null, new Color([50,150,100]));
 
-		function onQuerySuccess(featureSet) {
-			map.graphics.clear();
+		function getChangeAgentCounts(featureSet) {
+			//map.graphics.clear();
 			array.forEach(featureSet.features, function(feature) {
 				feature.setSymbol(markerSymbol);
 				map.graphics.add(feature);
 			});
 		}
 
-		function onError(error){
-			console.error("An error occurred  ", error);
-		}
+		// function onError(error){
+		// 	console.error("An error occurred  ", error);
+		// }
 
 				
+		on(dom.byId('calcStuff'), 'click', runClick);
+
 		on(dom.byId('zoom'), 'change', function(e){
 			var zoom = e.target.value;
 			console.log('zoom value is ' + zoom);
@@ -60,9 +62,11 @@ define([
 
 		// });
 
+		
 
-
+		
 		var hrcdLayer = map.getLayer('hrcd');
+		var ugaLayer = map.getLayer('uga');
 
 		var uvrHRCD = {"type" : "uniqueValue",
 			"field1":"ChangeAgentCode",
@@ -123,9 +127,9 @@ define([
     		{
 				"value": 5,
       			"symbol": {
-        			"color": [200, 0, 55, 128],
+        			"color": [90, 0, 55, 128],
         			"outline": {
-          				"color": [0, 255, 200, 255],
+          				"color": [180, 105, 100, 255],
           				"width": 1,
           				"type": "esriSLS",
           				"style": "esriSLSSolid"
@@ -140,6 +144,26 @@ define([
 
 			hrcdLayer.setRenderer(renderer);
 
+
+			on(dom.byId('uga_layer'), 'change', function(e){
+			var ugaCheckBox = e.target.checked;
+			console.log('ugaCheckBox value is ' + ugaCheckBox);
+			if (ugaCheckBox == true) {
+				ugaLayer.show();
+			} else {
+				ugaLayer.hide();
+			}
+			});
+
+			on(dom.byId('hrcd0911_layer'), 'change', function(e){
+			var hrcdCheckBox = e.target.checked;
+			console.log('hrcdcheckBox value is ' + hrcdCheckBox);
+			if (hrcdCheckBox == true) {
+				hrcdLayer.show();
+			} else {
+				hrcdLayer.hide();
+			}
+			});
 		//	 map.on('click', runClick); //need to pass function literal, not runClick(e)
 
 			// var requestLayer, layers = [], templatePicker;

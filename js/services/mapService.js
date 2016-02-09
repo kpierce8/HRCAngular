@@ -44,14 +44,17 @@ define([
 
 			hrcdLayer.setRenderer(renderer);
 
+
 			on(dom.byId('changeAgent'), 'change', function(e){
 			var changeAgent = e.target.value;
 			console.log('changeAgent value is ' + changeAgent);
 			if(changeAgent.length > 0) {
 				hrcdLayer.setDefinitionExpression('ChangeAgentCode > ' + changeAgent);
 			}
+			});
 
-		});
+			
+		
 	//layers.push(requestLayer);
 	layers.push(hrcdLayer);
 	return layers;

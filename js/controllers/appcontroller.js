@@ -8,9 +8,10 @@ define([
 	'esri/tasks/query',
 	'esri/tasks/QueryTask',
 	'esri/symbols/SimpleMarkerSymbol',
+	'esri/renderers/UniqueValueRenderer',
  	'dojo/on',
 	'esri/IdentityManager'
-	], function(dom, array, Color, MapController, FeatureLayer,  EditTools, Query, QueryTask, SimpleMarkerSymbol, on) {
+	], function(dom, array, Color, MapController, FeatureLayer,  EditTools, Query, QueryTask, SimpleMarkerSymbol, UniqueValueRenderer, on) {
 
 		function mapLoaded(map) {
 			var editTools = new EditTools({
@@ -36,9 +37,14 @@ define([
 			console.error("An error occurred  ", error);
 		}
 
-		var HRCD_URL = 'http://gispublic.dfw.wa.gov/arcgis/rest/services/ApplicationServices/PugetSoundHighResolutionChangeDetection/MapServer/1';
-			
-
+				
+		on(dom.byId('zoom'), 'change', function(e){
+			var zoom = e.target.value;
+			console.log('zoom value is ' + zoom);
+			if(zoom.length > 0) {
+				map.setZoom(zoom);
+			}
+			});
 
 		// on(dom.byId('changeAgent'), 'change', function(e){
 		// 	var changeAgent = e.target.value;
@@ -56,6 +62,83 @@ define([
 
 
 
+		var hrcdLayer = map.getLayer('hrcd');
+
+		var uvrHRCD = {"type" : "uniqueValue",
+			"field1":"ChangeAgentCode",
+			"defaultSymbol" : {
+				"color" : [100, 100, 100, 255],
+				"outline": {
+					"color" : [0, 25, 0, 255],
+					"width": 1,
+					"type" : "esriSLS",
+					"style": "esriSLSNull"
+					},
+				"type" : "esriSFS",
+				"style": "esriSFSNull"
+			},
+			"uniqueValueInfos" : [
+			{
+				"value": 1,
+      			"symbol": {
+        			"color": [255, 0, 0, 128],
+        			"outline": {
+          				"color": [0, 0, 0, 255],
+          				"width": 1,
+          				"type": "esriSLS",
+          				"style": "esriSLSSolid"
+        				},
+       			 "type": "esriSFS",
+        		 "style": "esriSFSSolid"
+      			}
+    		},
+    		{
+				"value": 2,
+      			"symbol": {
+        			"color": [145, 78,255, 128],
+        			"outline": {
+          				"color": [0, 255, 0, 255],
+          				"width": 1,
+          				"type": "esriSLS",
+          				"style": "esriSLSSolid"
+        				},
+       			 "type": "esriSFS",
+        		 "style": "esriSFSSolid"
+      			}
+    		},
+    		{
+				"value": 3,
+      			"symbol": {
+        			"color": [57, 125, 155, 128],
+        			"outline": {
+          				"color": [0, 125, 0, 255],
+          				"width": 1,
+          				"type": "esriSLS",
+          				"style": "esriSLSSolid"
+        				},
+       			 "type": "esriSFS",
+        		 "style": "esriSFSSolid"
+      			}
+    		},
+    		{
+				"value": 5,
+      			"symbol": {
+        			"color": [200, 0, 55, 128],
+        			"outline": {
+          				"color": [0, 255, 200, 255],
+          				"width": 1,
+          				"type": "esriSLS",
+          				"style": "esriSLSSolid"
+        				},
+       			 "type": "esriSFS",
+        		 "style": "esriSFSSolid"
+      			}
+    		}]
+			}
+
+			var renderer = new UniqueValueRenderer(uvrHRCD);
+
+			hrcdLayer.setRenderer(renderer);
 
 		//	 map.on('click', runClick); //need to pass function literal, not runClick(e)
 

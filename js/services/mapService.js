@@ -61,12 +61,12 @@ define([
 
 			var naip2015Layer = new ArcGISImageServiceLayer(naip2015, {
  				id: 'naip2015',
- 				visible: true
+ 				visible: false
  			});
 
 			var naip2013Layer = new ArcGISImageServiceLayer(naip2013, {
  				id: 'naip2013',
- 				visible: true
+ 				visible: false
  			});
  			var naip2011Layer = new ArcGISImageServiceLayer(naip2011, {
  				id: 'naip2011',
@@ -97,6 +97,8 @@ define([
 	layers.push(ugaLayer);
 	layers.push(naip2009Layer);
 	layers.push(naip2011Layer);
+	layers.push(naip2013Layer);
+	layers.push(naip2015Layer);
 	return layers;
 	}
 

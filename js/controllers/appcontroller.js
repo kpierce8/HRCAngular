@@ -2,6 +2,7 @@ define([
 	'dojo/dom',
 	'dojo/_base/array',
 	'dojo/_base/Color',
+	'dojo/html',
 	'controllers/mapcontroller',
     'esri/layers/FeatureLayer',
 	'widgets/edit/editTools',
@@ -11,7 +12,7 @@ define([
 	'esri/renderers/UniqueValueRenderer',
  	'dojo/on',
 	'esri/IdentityManager'
-	], function(dom, array, Color, MapController, FeatureLayer,  EditTools, Query, QueryTask, SimpleMarkerSymbol, UniqueValueRenderer, on) {
+	], function(dom, array, Color, html, MapController, FeatureLayer,  EditTools, Query, QueryTask, SimpleMarkerSymbol, UniqueValueRenderer, on) {
 
 
 		var mapVar
@@ -31,12 +32,13 @@ define([
 
 		//http://dojotoolkit.org/reference-guide/1.10/dojo/_base/array.html
 		function getChangeAgentCounts(featureSet) {
-			var featureCount = 0
+			var featureCount = 0;
 			array.forEach(featureSet.features, function(feature) {
-				featureCount += 1
+				featureCount += 1;
 			});
-
-			console.log("feature count is " + featureCount)
+			var p = dom.byId('calcOutput')
+			html.set(p,"There are " + featureCount + " redevelopment polygons");
+			console.log("feature count is " + featureCount);
 		}
 
 		 function onError(error){
@@ -86,6 +88,8 @@ define([
 		var ugaLayer = map.getLayer('uga');
 		var naip2009Layer = map.getLayer('naip2009');
 		var naip2011Layer = map.getLayer('naip2011');
+		var naip2013Layer = map.getLayer('naip2013');
+		var naip2015Layer = map.getLayer('naip2015');
 
 		var uvrHRCD = {"type" : "uniqueValue",
 			"field1":"ChangeAgentCode",
@@ -189,6 +193,7 @@ define([
 			//console.log('hrcdcheckBox value is ' + hrcdCheckBox);
 			if (hrcdCheckBox == true) {
 				naip2009Layer.show();
+				
 			} else {
 				naip2009Layer.hide();
 			}
@@ -199,12 +204,33 @@ define([
 			//console.log('hrcdcheckBox value is ' + hrcdCheckBox);
 			if (hrcdCheckBox == true) {
 				naip2011Layer.show();
+				
 			} else {
 				naip2011Layer.hide();
 			}
 			});
 
+				on(dom.byId('naip2013_layer'), 'change', function(e){
+			var hrcdCheckBox = e.target.checked;
+			//console.log('hrcdcheckBox value is ' + hrcdCheckBox);
+			if (hrcdCheckBox == true) {
+				naip2013Layer.show();
 				
+			} else {
+				naip2013Layer.hide();
+			}
+			});
+
+			on(dom.byId('naip2015_layer'), 'change', function(e){
+			var hrcdCheckBox = e.target.checked;
+			//console.log('hrcdcheckBox value is ' + hrcdCheckBox);
+			if (hrcdCheckBox == true) {
+				naip2015Layer.show();
+				
+			} else {
+				naip2015Layer.hide();
+			}
+			});
 
 
 

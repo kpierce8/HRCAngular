@@ -2,11 +2,12 @@ define([
 	'dojo/on',
 	'dojo/dom',
 	'esri/layers/FeatureLayer',
+	'esri/layers/ArcGISImageServiceLayer',
 	'esri/renderers/SimpleRenderer',
 	"esri/dijit/Popup", 
 	"esri/dijit/PopupTemplate",
 	'utils/symbolUtil']
-	, function(on, dom, FeatureLayer, SimpleRenderer, Popup, PopupTemplate, symbolUtil) {
+	, function(on, dom, FeatureLayer, ArcGISImageServiceLayer, SimpleRenderer, Popup, PopupTemplate, symbolUtil) {
 		function _loadServices(config){
 
 		
@@ -17,8 +18,16 @@ define([
 			var ugaURL = 'https://services.arcgis.com/6lCKYNJLvwTXqrmp/arcgis/rest/services/Urban_Growth_Areas/FeatureServer/0/query?outFields=*&where=1%3D1'
 
 			var wriaURL = 'https://services.arcgis.com/6lCKYNJLvwTXqrmp/arcgis/rest/services/WAECY_WRIA/FeatureServer/0/query?outFields=*&where=1%3D1'
+			var ecyRiparian = 'https://services.arcgis.com/6lCKYNJLvwTXqrmp/arcgis/rest/services/Riparian_Buffer_Width_50/FeatureServer/1/query?outFields=*&where=1%3D1'
+			var smaWater = 'https://services.arcgis.com/6lCKYNJLvwTXqrmp/arcgis/rest/services/ShorelineManagementActJurisdiction/FeatureServer/1/query?outFields=*&where=1%3D1'
+
+			var nhdFlowWA = 'https://fortress.wa.gov/ecy/ecyprodgislb/arcgis/rest/services/NHD/NHD_Hydro_Cache/MapServer/0/query?outFields=*&where=&geometry={"xmin":-17087417.732927736,"ymin":5365255.679137867,"xmax":-9685867.410019517,"ymax":6832846.622212861,"spatialReference":{"wkid":102100}}'
 
 
+			var naip2015 = 'http://gis.apfo.usda.gov/arcgis/rest/services/NAIP/Washington_2015_1m/ImageServer'
+			var naip2013 = 'http://wagda.lib.washington.edu:6080/arcgis/rest/services/Imagery_services/NAIP_2013/ImageServer'
+			var naip2011 = 'http://wagda.lib.washington.edu:6080/arcgis/rest/services/Imagery_services/NAIP_2011/ImageServer'
+			var naip2009 = 'http://wagda.lib.washington.edu:6080/arcgis/rest/services/Imagery_services/NAIP_2009/ImageServer'
 			var layers = [];
 
 			// var	requestLayer = new FeatureLayer(REQUEST_URL, {
@@ -49,6 +58,24 @@ define([
  				visible: false
  			});
 
+			var naip2015Layer = new ArcGISImageServiceLayer(naip2015, {
+ 				id: 'naip2015',
+ 				visible: true
+ 			});
+
+			var naip2013Layer = new ArcGISImageServiceLayer(naip2013, {
+ 				id: 'naip2013',
+ 				visible: true
+ 			});
+ 			var naip2011Layer = new ArcGISImageServiceLayer(naip2011, {
+ 				id: 'naip2011',
+ 				visible: true
+ 			});
+			var naip2009Layer = new ArcGISImageServiceLayer(naip2009, {
+ 				id: 'naip2009',
+ 				visible: true
+ 			});
+
 			var renderer = new SimpleRenderer(symbolUtil.renderSymbol());
 
 			hrcdLayer.setRenderer(renderer);
@@ -67,6 +94,8 @@ define([
 	//layers.push(requestLayer);
 	layers.push(hrcdLayer);
 	layers.push(ugaLayer);
+	layers.push(naip2009Layer);
+	layers.push(naip2011Layer);
 	return layers;
 	}
 

@@ -24,8 +24,11 @@
 <li><a href="/data/HRCD Workshop Materials.zip">Workshop File Download</a></li>
 &nbsp;
 <p>A miscellaneous map div, data visualization coming soon</p>
-<input id="zoom" ng-model="zoom" type="text"> 
+<label for="zoom">Zoom</label><input id="zoom" ng-model="zoom" type="text"> 
 <p>Map zoom is {{ zoom}} and map test value is {{ test }} and test2 is {{ test2 }} or {{ test3 }}</p>
+<label for="wrianm">WRIA</label><input type="text" id="wrianm" value="1">
+<button id="calcStuff">Calculate</button>
+</br>
 <select name="changeAgent" id="changeAgent">
 	<option value="0">All</option>
 	<option value="1">Development</option>
@@ -40,11 +43,13 @@
   <label><input type="checkbox" id="uga_layer" value="false">UGAs</label>
 </div>
 <div class="checkbox disabled">
-  <label><input type="checkbox" value="" disabled>Option 3</label>
+  <label><input type="checkbox" id="naip2011_layer" value="false">NAIP 2011</label>
 </div>
-<div id="mapDiv">
+<div class="checkbox disabled">
+  <label><input type="checkbox" id="naip2009_layer" value="false">NAIP 2009</label>
+</div>
 
-<button id="calcStuff">Calculate</button>
+<div id="mapDiv">
 </div>
 
 <!-- <esri-map zoom="4" basemap="streets"></esri-map> -->

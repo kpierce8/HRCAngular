@@ -13,32 +13,49 @@ define([
 	'esri/IdentityManager'
 	], function(dom, array, Color, MapController, FeatureLayer,  EditTools, Query, QueryTask, SimpleMarkerSymbol, UniqueValueRenderer, on) {
 
+
+		var mapVar
+
 		function mapLoaded(map) {
 			var editTools = new EditTools({
 			 	map:map
 			 }, 'map-tools');
 			 console.debug('map has been loaded ', map);
-
+			this.mapVar = map;
 
 			 //THIS IS THE PLACE FOR MAP CUSTOMIZATION??
 
 		//Next three functions from page33,34 in manning book
 		//var markerSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10, null, new Color([50,150,100]));
 
+
+		//http://dojotoolkit.org/reference-guide/1.10/dojo/_base/array.html
 		function getChangeAgentCounts(featureSet) {
-			//map.graphics.clear();
+			var featureCount = 0
 			array.forEach(featureSet.features, function(feature) {
-				feature.setSymbol(markerSymbol);
-				map.graphics.add(feature);
+				featureCount += 1
 			});
+
+			console.log("feature count is " + featureCount)
 		}
 
-		// function onError(error){
-		// 	console.error("An error occurred  ", error);
-		// }
+		 function onError(error){
+		 	console.error("An error occurred  ", error);
+		 }
 
 				
-		on(dom.byId('calcStuff'), 'click', runClick);
+		on(dom.byId('calcStuff'), 'click', function(){
+				var queryTask = new QueryTask(hrcdLayer.url);
+				var query = new Query();
+				query.where = 'ChangeAgentCode = ' + 5 + 'And WRIAnumber = ' + dom.byId('wrianm').value;
+				query.returnGeometry = false;
+				console.log('query is :' + query.where);
+				queryTask.execute(query).then(getChangeAgentCounts, onError);
+		});
+
+
+
+
 
 		on(dom.byId('zoom'), 'change', function(e){
 			var zoom = e.target.value;
@@ -67,6 +84,8 @@ define([
 		
 		var hrcdLayer = map.getLayer('hrcd');
 		var ugaLayer = map.getLayer('uga');
+		var naip2009Layer = map.getLayer('naip2009');
+		var naip2011Layer = map.getLayer('naip2011');
 
 		var uvrHRCD = {"type" : "uniqueValue",
 			"field1":"ChangeAgentCode",
@@ -157,13 +176,38 @@ define([
 
 			on(dom.byId('hrcd0911_layer'), 'change', function(e){
 			var hrcdCheckBox = e.target.checked;
-			console.log('hrcdcheckBox value is ' + hrcdCheckBox);
+			//console.log('hrcdcheckBox value is ' + hrcdCheckBox);
 			if (hrcdCheckBox == true) {
 				hrcdLayer.show();
 			} else {
 				hrcdLayer.hide();
 			}
 			});
+
+			on(dom.byId('naip2009_layer'), 'change', function(e){
+			var hrcdCheckBox = e.target.checked;
+			//console.log('hrcdcheckBox value is ' + hrcdCheckBox);
+			if (hrcdCheckBox == true) {
+				naip2009Layer.show();
+			} else {
+				naip2009Layer.hide();
+			}
+			});
+
+			on(dom.byId('naip2011_layer'), 'change', function(e){
+			var hrcdCheckBox = e.target.checked;
+			//console.log('hrcdcheckBox value is ' + hrcdCheckBox);
+			if (hrcdCheckBox == true) {
+				naip2011Layer.show();
+			} else {
+				naip2011Layer.hide();
+			}
+			});
+
+				
+
+
+
 		//	 map.on('click', runClick); //need to pass function literal, not runClick(e)
 
 			// var requestLayer, layers = [], templatePicker;
@@ -189,9 +233,10 @@ define([
 			// var params = {settings: settings};
 			// var editorWidget = new Editor(params);
 			
-		}
+		} //End maploaded function
 
 
+		var varOnCtrl = "my var on the app ctrl";
 		//just a test function, can delete
 		function runClick(e){
 			alert("got click");
@@ -202,7 +247,13 @@ define([
 			mapCtrl.load().then(mapLoaded)
 
 		}
+
+		function getMap(){
+			return this.varOnCtrl;
+		}
+
 		return {
-			init: init
+			init: init,
+			map: mapVar
 		};
 	});

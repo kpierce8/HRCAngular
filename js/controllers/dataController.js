@@ -1,4 +1,7 @@
-angular.module('hrcdApp').controller('dataCtrl', ['$scope', '$http', function($scope, $http) {
+angular.module('hrcdApp').controller('dataCtrl', 
+	['$scope', 
+	'$http', 
+	function($scope, $http) {
 	$scope.name = 'Ken Pierce';
 	
 	$scope.zoom = 14;
@@ -36,7 +39,8 @@ angular.module('hrcdApp').controller('dataCtrl', ['$scope', '$http', function($s
 	$scope.test2 = "test2data";
 	//$scope.test = appCtrl.mapCtrl.basemap;
 	
-	console.debug("data controller ran", appCtrl);     
+	console.debug("data controller ran", appCtrl);   
+	console.debug("data controller ran", appCtrl.map);    
 	});
 
 

@@ -49,7 +49,8 @@ define([
 			var hrcdLayer = new FeatureLayer(HRCD_URL, {
 				id: 'hrcd',
 				outFields: ['*'],
-				infoTemplate: hrcdTemplate
+				infoTemplate: hrcdTemplate,
+				visible: false
 			});
 
  			var ugaLayer = new FeatureLayer(ugaURL, {
@@ -69,11 +70,11 @@ define([
  			});
  			var naip2011Layer = new ArcGISImageServiceLayer(naip2011, {
  				id: 'naip2011',
- 				visible: true
+ 				visible: false
  			});
 			var naip2009Layer = new ArcGISImageServiceLayer(naip2009, {
  				id: 'naip2009',
- 				visible: true
+ 				visible: false
  			});
 
 			var renderer = new SimpleRenderer(symbolUtil.renderSymbol());

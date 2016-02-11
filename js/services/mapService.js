@@ -6,8 +6,9 @@ define([
 	'esri/renderers/SimpleRenderer',
 	"esri/dijit/Popup", 
 	"esri/dijit/PopupTemplate",
+	"esri/InfoTemplate",
 	'utils/symbolUtil']
-	, function(on, dom, FeatureLayer, ArcGISImageServiceLayer, SimpleRenderer, Popup, PopupTemplate, symbolUtil) {
+	, function(on, dom, FeatureLayer, ArcGISImageServiceLayer, SimpleRenderer, Popup, PopupTemplate, InfoTemplate, symbolUtil) {
 		function _loadServices(config){
 
 		
@@ -46,10 +47,13 @@ define([
         });
 
 
+		var hrcdInfoTemplate = new InfoTemplate("Attributes", "Change percentage: ${TotalChangePercent}<br>Change Agent: ${ChangeAgentName}<br>Canopy Loss: ${TreeDecreasePercent}<br>Increased impervious surface: ${ImperviousIncreasePercent}<br>Acres: ${AreaAcres}<br>WRIA: ${WRIAnumber}");
+
+
 			var hrcdLayer = new FeatureLayer(HRCD_URL, {
 				id: 'hrcd',
 				outFields: ['*'],
-				infoTemplate: hrcdTemplate,
+				infoTemplate: hrcdInfoTemplate,
 				visible: false
 			});
 

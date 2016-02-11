@@ -23,38 +23,39 @@
 <h3>HRCD January 25, 2016 SMP Workshop Documents</h3>
 <li><a href="/data/HRCD Workshop Materials.zip">Workshop File Download</a></li>
 &nbsp;
-<p>A miscellaneous map div, data visualization coming soon</p>
+<h3>A miscellaneous map div, data visualization coming soon, still heavily in development</h3>
 <label for="zoom">Zoom</label><input id="zoom" ng-model="zoom" type="text"> 
 <p>Map zoom is {{ zoom}} and map test value is {{ test }} and test2 is {{ test2 }} or {{ test3 }}</p>
 <label for="wrianm">WRIA</label><input type="text" id="wrianm" value="1">
 <button id="calcStuff">Calculate</button><p id="calcOutput"></p>
 </br>
+
+
+<div class="checkbox">
+  <label><input type="checkbox" id="hrcd0911_layer" value="true" enabled>HRCD 09-11</label>
+</div>
 <select name="changeAgent" id="changeAgent">
 	<option value="0">All</option>
 	<option value="1">Development</option>
 	<option value="2">Forestry</option>
 	<option value="3">Tree removal</option>
+	<option value="4">Natural Change</option>
+	<option value="5">Redevelopment</option>
 </select>
 
 <div class="checkbox">
-  <label><input type="checkbox" id="hrcd0911_layer" value="true" enabled>HRCD 09-11</label>
-</div>
-<div class="checkbox">
   <label><input type="checkbox" id="uga_layer" value="false">UGAs</label>
 </div>
-<div class="checkbox disabled">
-  <label><input type="checkbox" id="naip2009_layer" value="false">NAIP 2009</label>
-</div>
-<div class="checkbox disabled">
-  <label><input type="checkbox" id="naip2011_layer" value="false">NAIP 2011</label>
-</div>
+<!-- <div class="checkbox disabled">
+ <label><input type="checkbox" id="ecyBuffer_layer" value="false">Ecology '30 Buffers</label>
+</div> -->
 
-<div class="checkbox disabled">
-  <label><input type="checkbox" id="naip2013_layer" value="false">NAIP 2013</label>
-</div>
-<div class="checkbox disabled">
-  <label><input type="checkbox" id="naip2015_layer" value="false">NAIP 2015</label>
-</div>
+<h4>Show NAIP data</h4>
+  <label class="checkbox-inline"><input type="checkbox" id="naip2009_layer" value="false">NAIP 2009</label>
+  <label class="checkbox-inline"><input type="checkbox" id="naip2011_layer" value="false">NAIP 2011</label>
+  <label class="checkbox-inline"><input type="checkbox" id="naip2013_layer" value="false">NAIP 2013</label>
+  <label class="checkbox-inline"><input type="checkbox" id="naip2015_layer" value="false">NAIP 2015</label>
+
 
 <div id="mapDiv">
 </div>

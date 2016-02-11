@@ -6,6 +6,8 @@ angular.module('hrcdApp').controller('dataCtrl',
 	
 	$scope.zoom = 14;
 	var map;
+	$scope.test2 = "bob";
+
 
  require([
 	'controllers/appcontroller',
@@ -36,15 +38,18 @@ angular.module('hrcdApp').controller('dataCtrl',
 			},
 			layers: mapService.loadServices()
 		});
-	$scope.test2 = "test2data";
-	//$scope.test = appCtrl.mapCtrl.basemap;
 	
-	console.debug("data controller ran", appCtrl);   
+	//$scope.test = appCtrl.mapCtrl.basemap;
+	$scope.$apply(function(){
+		$scope.test2 = "test2data";
+	});
+	
+	console.debug("in function test2 is ", $scope.test2);   
 	console.debug("data controller ran", appCtrl.map);    
 	});
 
-
-$scope.test3 = "test3";
+console.debug("outside function test2 is ", $scope.test2);   
+$scope.test3 = "test3data";
 
 
 

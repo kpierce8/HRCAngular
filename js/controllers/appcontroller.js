@@ -11,8 +11,9 @@ define([
 	'esri/symbols/SimpleMarkerSymbol',
 	'esri/renderers/UniqueValueRenderer',
  	'dojo/on',
+ 	'services/rendererService',
 	'esri/IdentityManager'
-	], function(dom, array, Color, html, MapController, FeatureLayer,  EditTools, Query, QueryTask, SimpleMarkerSymbol, UniqueValueRenderer, on) {
+	], function(dom, array, Color, html, MapController, FeatureLayer,  EditTools, Query, QueryTask, SimpleMarkerSymbol, UniqueValueRenderer, on, Renderers) {
 
 
 		var mapVar
@@ -37,7 +38,7 @@ define([
 				featureCount += 1;
 			});
 			var p = dom.byId('calcOutput')
-			html.set(p,"There are " + featureCount + " redevelopment polygons");
+			html.set(p,"There are " + featureCount + " redevelopment polygons in wria " + dom.byId('wrianm').value);
 			console.log("feature count is " + featureCount);
 		}
 
@@ -67,21 +68,6 @@ define([
 			}
 			});
 
-		// on(dom.byId('changeAgent'), 'change', function(e){
-		// 	var changeAgent = e.target.value;
-		// 	console.log('changeAgent value is ' + changeAgent);
-		// 	if(changeAgent.length > 0) {
-		// 		var queryTask = new QueryTask(HRCD_URL);
-		// 		var query = new Query();
-		// 		query.where = 'ChangeAgentCode = ' + changeAgent;
-		// 		query.returnGeometry = true;
-		// 		console.log('query is :' + query.where);
-		// 		queryTask.execute(query).then(onQuerySuccess, onError);
-		// 	}
-
-		// });
-
-		
 
 		
 		var hrcdLayer = map.getLayer('hrcd');
@@ -90,80 +76,10 @@ define([
 		var naip2011Layer = map.getLayer('naip2011');
 		var naip2013Layer = map.getLayer('naip2013');
 		var naip2015Layer = map.getLayer('naip2015');
+		//var nhdFlowLayer = map.getLayer('nhdFlow');
+		var ecyBufferLayer = map.getLayer('ecyBuffer');
 
-		var uvrHRCD = {"type" : "uniqueValue",
-			"field1":"ChangeAgentCode",
-			"defaultSymbol" : {
-				"color" : [100, 100, 100, 255],
-				"outline": {
-					"color" : [0, 25, 0, 255],
-					"width": 1,
-					"type" : "esriSLS",
-					"style": "esriSLSNull"
-					},
-				"type" : "esriSFS",
-				"style": "esriSFSNull"
-			},
-			"uniqueValueInfos" : [
-			{
-				"value": 1,
-      			"symbol": {
-        			"color": [255, 0, 0, 128],
-        			"outline": {
-          				"color": [0, 0, 0, 255],
-          				"width": 1,
-          				"type": "esriSLS",
-          				"style": "esriSLSSolid"
-        				},
-       			 "type": "esriSFS",
-        		 "style": "esriSFSSolid"
-      			}
-    		},
-    		{
-				"value": 2,
-      			"symbol": {
-        			"color": [145, 78,255, 128],
-        			"outline": {
-          				"color": [0, 255, 0, 255],
-          				"width": 1,
-          				"type": "esriSLS",
-          				"style": "esriSLSSolid"
-        				},
-       			 "type": "esriSFS",
-        		 "style": "esriSFSSolid"
-      			}
-    		},
-    		{
-				"value": 3,
-      			"symbol": {
-        			"color": [57, 125, 155, 128],
-        			"outline": {
-          				"color": [0, 125, 0, 255],
-          				"width": 1,
-          				"type": "esriSLS",
-          				"style": "esriSLSSolid"
-        				},
-       			 "type": "esriSFS",
-        		 "style": "esriSFSSolid"
-      			}
-    		},
-    		{
-				"value": 5,
-      			"symbol": {
-        			"color": [90, 0, 55, 128],
-        			"outline": {
-          				"color": [180, 105, 100, 255],
-          				"width": 1,
-          				"type": "esriSLS",
-          				"style": "esriSLSSolid"
-        				},
-       			 "type": "esriSFS",
-        		 "style": "esriSFSSolid"
-      			}
-    		}]
-			}
-
-			var renderer = new UniqueValueRenderer(uvrHRCD);
+			var renderer = new UniqueValueRenderer(Renderers.uvrHRCD);
 
 			hrcdLayer.setRenderer(renderer);
 
@@ -229,6 +145,17 @@ define([
 				
 			} else {
 				naip2015Layer.hide();
+			}
+			});
+
+			on(dom.byId('ecyBuffer_layer'), 'change', function(e){
+			var hrcdCheckBox = e.target.checked;
+			//console.log('hrcdcheckBox value is ' + hrcdCheckBox);
+			if (hrcdCheckBox == true) {
+				ecyBufferLayer.show();
+				
+			} else {
+				ecyBufferLayer.hide();
 			}
 			});
 

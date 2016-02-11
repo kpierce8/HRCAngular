@@ -14,6 +14,9 @@ angular.module('hrcdRoutes', ['ngRoute'])
 		controller: 'methodCtrl',
 		templateUrl: '/views/methods.html'
 	})
+	.when('/contacts', {
+		templateUrl: '/views/contacts.html'
+	})
 	.when('/imageProcessing', {
 			templateUrl: '/methods/image_processing.html'
 		})

@@ -22,7 +22,7 @@ define([
 			var ecyRiparian = 'https://services.arcgis.com/6lCKYNJLvwTXqrmp/arcgis/rest/services/Riparian_Buffer_Width_50/FeatureServer/1/query?outFields=*&where=1%3D1'
 			var smaWater = 'https://services.arcgis.com/6lCKYNJLvwTXqrmp/arcgis/rest/services/ShorelineManagementActJurisdiction/FeatureServer/1/query?outFields=*&where=1%3D1'
 
-			var nhdFlowWA = 'https://fortress.wa.gov/ecy/ecyprodgislb/arcgis/rest/services/NHD/NHD_Hydro_Cache/MapServer/0/query?outFields=*&where=&geometry={"xmin":-17087417.732927736,"ymin":5365255.679137867,"xmax":-9685867.410019517,"ymax":6832846.622212861,"spatialReference":{"wkid":102100}}'
+			//var nhdFlowWA = 'https://fortress.wa.gov/ecy/ecyprodgislb/arcgis/rest/services/NHD/NHD_Hydro_Cache/MapServer/0'
 
 
 			var naip2015 = 'http://gis.apfo.usda.gov/arcgis/rest/services/NAIP/Washington_2015_1m/ImageServer'
@@ -47,14 +47,17 @@ define([
         });
 
 
-		var hrcdInfoTemplate = new InfoTemplate("Attributes", "Change percentage: ${TotalChangePercent}<br>Change Agent: ${ChangeAgentName}<br>Canopy Loss: ${TreeDecreasePercent}<br>Increased impervious surface: ${ImperviousIncreasePercent}<br>Acres: ${AreaAcres}<br>WRIA: ${WRIAnumber}");
+		var hrcdInfoTemplate = new InfoTemplate("Change attributes", "Change percentage: ${TotalChangePercent}\
+			<br>Change Agent: ${ChangeAgentName}<br>Canopy Loss: ${TreeDecreasePercent}\
+			<br>Increased impervious surface: ${ImperviousIncreasePercent}\
+			<br>Acres: ${AreaAcres}<br>WRIA: ${WRIAnumber}<br>Change period ${StartYear} to ${EndYear}");
 
 
 			var hrcdLayer = new FeatureLayer(HRCD_URL, {
 				id: 'hrcd',
 				outFields: ['*'],
 				infoTemplate: hrcdInfoTemplate,
-				visible: false
+				visible: true
 			});
 
  			var ugaLayer = new FeatureLayer(ugaURL, {
@@ -81,6 +84,16 @@ define([
  				visible: false
  			});
 
+			var ecyBufferLayer = new FeatureLayer(ecyRiparian, {
+ 				id: 'ecyBuffer',
+ 				visible: false
+ 			});
+
+			// var nhdFlowLayer = new ArcGISImageServiceLayer(nhdFlowWA, {
+ 		// 		id: 'nhdFlow',
+ 		// 		visible: false
+ 		// 	});
+
 			var renderer = new SimpleRenderer(symbolUtil.renderSymbol());
 
 			hrcdLayer.setRenderer(renderer);
@@ -90,9 +103,13 @@ define([
 			var changeAgent = e.target.value;
 			console.log('changeAgent value is ' + changeAgent);
 			if(changeAgent.length > 0) {
-				hrcdLayer.setDefinitionExpression('ChangeAgentCode > ' + changeAgent);
+				if (changeAgent == 0) {
+					hrcdLayer.setDefinitionExpression('ChangeAgentCode > ' + changeAgent);
+				} else {
+				hrcdLayer.setDefinitionExpression('ChangeAgentCode = ' + changeAgent);
+				}
 			}
-			});
+		});
 
 			
 		
@@ -103,6 +120,8 @@ define([
 	layers.push(naip2011Layer);
 	layers.push(naip2013Layer);
 	layers.push(naip2015Layer);
+//	layers.push(nhdFlowLayer);
+	layers.push(ecyBufferLayer);
 	return layers;
 	}
 

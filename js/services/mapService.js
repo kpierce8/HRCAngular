@@ -13,7 +13,8 @@ define([
 
 		
 			var REQUEST_URL = 'http://services.arcgis.com/rcya3vExsaVBGUDp/arcgis/rest/services/testTrees/FeatureServer/0'
-   			var HRCD_URL = 'http://gispublic.dfw.wa.gov/arcgis/rest/services/ApplicationServices/PugetSoundHighResolutionChangeDetection/MapServer/1'
+   			var HRCD11_URL = 'http://gispublic.dfw.wa.gov/arcgis/rest/services/ApplicationServices/PugetSoundHighResolutionChangeDetection/MapServer/1'
+			var HRCD09_URL = 'http://gispublic.dfw.wa.gov/arcgis/rest/services/ApplicationServices/PugetSoundHighResolutionChangeDetection/MapServer/0'
 			var wa_countyURL = 'https://services.arcgis.com/jsIt88o09Q0r1j8h/arcgis/rest/services/StateBoundary/FeatureServer/0/query?outFields=*&where=&geometry={"xmin":-15181111.166244071,"ymin":5623514.765600957,"xmax":-11717596.540587086,"ymax":6357310.237138454,"spatialReference":{"wkid":102100}}'
 
 			var ugaURL = 'https://services.arcgis.com/6lCKYNJLvwTXqrmp/arcgis/rest/services/Urban_Growth_Areas/FeatureServer/0/query?outFields=*&where=1%3D1'
@@ -53,11 +54,18 @@ define([
 			<br>Acres: ${AreaAcres}<br>WRIA: ${WRIAnumber}<br>Change period ${StartYear} to ${EndYear}");
 
 
-			var hrcdLayer = new FeatureLayer(HRCD_URL, {
-				id: 'hrcd',
+			var hrcd11Layer = new FeatureLayer(HRCD11_URL, {
+				id: 'hrcd11',
 				outFields: ['*'],
 				infoTemplate: hrcdInfoTemplate,
-				visible: true
+				visible: false
+			});
+
+			var hrcd09Layer = new FeatureLayer(HRCD09_URL, {
+				id: 'hrcd09',
+				outFields: ['*'],
+				infoTemplate: hrcdInfoTemplate,
+				visible: false
 			});
 
  			var ugaLayer = new FeatureLayer(ugaURL, {
@@ -94,19 +102,21 @@ define([
  		// 		visible: false
  		// 	});
 
-			var renderer = new SimpleRenderer(symbolUtil.renderSymbol());
+			//var renderer11 = new SimpleRenderer(symbolUtil.renderSymbol());
 
-			hrcdLayer.setRenderer(renderer);
-
+			//hrcd11Layer.setRenderer(renderer11);
+			//hrcd09Layer.setRenderer(renderer11);
 
 			on(dom.byId('changeAgent'), 'change', function(e){
 			var changeAgent = e.target.value;
 			console.log('changeAgent value is ' + changeAgent);
 			if(changeAgent.length > 0) {
 				if (changeAgent == 0) {
-					hrcdLayer.setDefinitionExpression('ChangeAgentCode > ' + changeAgent);
+					hrcd11Layer.setDefinitionExpression('ChangeAgentCode > ' + changeAgent);
+					hrcd09Layer.setDefinitionExpression('ChangeAgentCode > ' + changeAgent);
 				} else {
-				hrcdLayer.setDefinitionExpression('ChangeAgentCode = ' + changeAgent);
+				hrcd09Layer.setDefinitionExpression('ChangeAgentCode = ' + changeAgent);
+				hrcd11Layer.setDefinitionExpression('ChangeAgentCode = ' + changeAgent);
 				}
 			}
 		});
@@ -114,7 +124,8 @@ define([
 			
 		
 	//layers.push(requestLayer);
-	layers.push(hrcdLayer);
+	layers.push(hrcd11Layer);
+	layers.push(hrcd09Layer);
 	layers.push(ugaLayer);
 	layers.push(naip2009Layer);
 	layers.push(naip2011Layer);

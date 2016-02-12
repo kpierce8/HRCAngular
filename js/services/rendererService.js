@@ -8,12 +8,19 @@ define([
 		
 		var renderers = {};
 
-			var uvrHRCD = {"type" : "uniqueValue",
+      var outline09 = [200, 100, 100, 255];
+      var outline11 = [100, 100, 200, 255];
+      var devColor = [255, 0, 0, 128];
+      var forestryColor = [0, 255, 0, 128];
+      var treeColor = [100, 255, 100, 128];
+
+
+			var uvrHRCD09 = {"type" : "uniqueValue",
 			"field1":"ChangeAgentCode",
 			"defaultSymbol" : {
 				"color" : [100, 100, 100, 255],
 				"outline": {
-					"color" : [0, 25, 0, 255],
+					"color" : outline09,
 					"width": 1,
 					"type" : "esriSLS",
 					"style": "esriSLSNull"
@@ -25,9 +32,9 @@ define([
 			{
 				"value": 1,
       			"symbol": {
-        			"color": [255, 0, 0, 128],
+        			"color": devColor,
         			"outline": {
-          				"color": [0, 0, 0, 255],
+          				"color": outline09,
           				"width": 1,
           				"type": "esriSLS",
           				"style": "esriSLSSolid"
@@ -39,9 +46,9 @@ define([
     		{
 				"value": 2,
       			"symbol": {
-        			"color": [145, 78,255, 128],
+        			"color": forestryColor,
         			"outline": {
-          				"color": [0, 255, 0, 255],
+          				"color": outline09,
           				"width": 1,
           				"type": "esriSLS",
           				"style": "esriSLSSolid"
@@ -53,9 +60,9 @@ define([
     		{
 				"value": 3,
       			"symbol": {
-        			"color": [57, 125, 155, 128],
+        			"color": treeColor,
         			"outline": {
-          				"color": [0, 125, 0, 255],
+          				"color": outline09,
           				"width": 1,
           				"type": "esriSLS",
           				"style": "esriSLSSolid"
@@ -69,7 +76,7 @@ define([
       			"symbol": {
         			"color": [90, 0, 55, 128],
         			"outline": {
-          				"color": [180, 105, 100, 255],
+          				"color": outline09,
           				"width": 1,
           				"type": "esriSLS",
           				"style": "esriSLSSolid"
@@ -80,7 +87,82 @@ define([
     		}]
 			}
 
-		renderers.uvrHRCD = uvrHRCD;
+
+var uvrHRCD11 = {"type" : "uniqueValue",
+      "field1":"ChangeAgentCode",
+      "defaultSymbol" : {
+        "color" : [100, 100, 100, 255],
+        "outline": {
+          "color" : outline11,
+          "width": 1,
+          "type" : "esriSLS",
+          "style": "esriSLSNull"
+          },
+        "type" : "esriSFS",
+        "style": "esriSFSNull"
+      },
+      "uniqueValueInfos" : [
+      {
+        "value": 1,
+            "symbol": {
+              "color": devColor,
+              "outline": {
+                  "color": outline11,
+                  "width": 1,
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid"
+                },
+             "type": "esriSFS",
+             "style": "esriSFSSolid"
+            }
+        },
+        {
+        "value": 2,
+            "symbol": {
+              "color": forestryColor,
+              "outline": {
+                  "color": outline11,
+                  "width": 1,
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid"
+                },
+             "type": "esriSFS",
+             "style": "esriSFSSolid"
+            }
+        },
+        {
+        "value": 3,
+            "symbol": {
+              "color": treeColor,
+              "outline": {
+                  "color": outline11,
+                  "width": 1,
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid"
+                },
+             "type": "esriSFS",
+             "style": "esriSFSSolid"
+            }
+        },
+        {
+        "value": 5,
+            "symbol": {
+              "color": [90, 0, 55, 128],
+              "outline": {
+                  "color": outline11,
+                  "width": 1,
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid"
+                },
+             "type": "esriSFS",
+             "style": "esriSFSSolid"
+            }
+        }]
+      }
+
+
+		renderers.uvrHRCD09 = uvrHRCD09;
+    renderers.uvrHRCD11 = uvrHRCD11;
 
 		return renderers;
 

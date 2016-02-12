@@ -20,21 +20,24 @@
 <li><a href="/data/HRCD 2009-2011.zip">HRCD 2009-2011 Data</a></li>
 
 
-<h3>HRCD January 25, 2016 SMP Workshop Documents</h3>
+<h4>HRCD January 25, 2016 SMP Workshop Documents</h4>
 <li><a href="/data/HRCD Workshop Materials.zip">Workshop File Download</a></li>
 &nbsp;
 <h3>A miscellaneous map div, data visualization coming soon, still heavily in development</h3>
 <label for="zoom">Zoom</label><input id="zoom" ng-model="zoom" type="text"> 
-<p>Map zoom is {{ zoom}} and map test value is {{ test }} and test2 is {{ test2 }} or {{ test3 }}</p>
+<p>Map zoom is {{ zoom}} and map test value is {{ test }} and test2 is {{ test4 }} or {{ test3 }}</p>
 <label for="wrianm">WRIA</label><input type="text" id="wrianm" value="1">
 <button id="calcStuff">Calculate</button><p id="calcOutput"></p>
+<button id="zoomToWria" class="btn btn-info">Zoom to WRIA</button>
 </br>
 
 
 <div class="checkbox">
-  <label><input type="checkbox" id="hrcd0911_layer" value="true" enabled>HRCD 09-11</label>
+    <label><input type="checkbox" id="hrcd09_layer" value="true" enabled>HRCD 06-09</label>
+    <label><input type="checkbox" id="hrcd11_layer" value="true" enabled>HRCD 09-11</label>
+
 </div>
-<select name="changeAgent" id="changeAgent">
+<label for="changeAgent">Select a change agent to filter the results </label><select  style="margin-left:5px"; name="changeAgent" id="changeAgent">
 	<option value="0">All</option>
 	<option value="1">Development</option>
 	<option value="2">Forestry</option>

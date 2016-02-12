@@ -5,10 +5,11 @@ angular.module('hrcdApp').controller('dataCtrl',
 	$scope.name = 'Ken Pierce';
 	
 	$scope.zoom = 14;
+	$scope.center =  [-122.8961, 47.0366];
 	var map;
 	$scope.test2 = "bob";
-
-
+	$scope.map = "";
+	$scope.$watch(zoom);
  require([
 	'controllers/appcontroller',
 	'services/mapService',
@@ -32,7 +33,7 @@ angular.module('hrcdApp').controller('dataCtrl',
 			elem: 'mapDiv',
 			mapOptions: {
 				basemap: 'gray',
-				center: [-122.8961, 47.0366],
+				center: $scope.center,
 				zoom: $scope.zoom,
 				infoWindow: popup
 			},
@@ -41,7 +42,9 @@ angular.module('hrcdApp').controller('dataCtrl',
 	
 	//$scope.test = appCtrl.mapCtrl.basemap;
 	$scope.$apply(function(){
-		$scope.test2 = "test2data";
+		$scope.test4 = "test4data";
+		$scope.map = appCtrl.map;
+		//$scope.zoom = appCtrl.map.getZoom;
 	});
 	
 	console.debug("in function test2 is ", $scope.test2);   
@@ -51,7 +54,7 @@ angular.module('hrcdApp').controller('dataCtrl',
 console.debug("outside function test2 is ", $scope.test2);   
 $scope.test3 = "test3data";
 
-
+console.debug("data controller now has map", $scope.map);    
 
 }]);
 

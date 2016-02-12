@@ -10,10 +10,11 @@ define([
 	'esri/tasks/QueryTask',
 	'esri/symbols/SimpleMarkerSymbol',
 	'esri/renderers/UniqueValueRenderer',
+	'esri/graphicsUtils',
  	'dojo/on',
  	'services/rendererService',
 	'esri/IdentityManager'
-	], function(dom, array, Color, html, MapController, FeatureLayer,  EditTools, Query, QueryTask, SimpleMarkerSymbol, UniqueValueRenderer, on, Renderers) {
+	], function(dom, array, Color, html, MapController, FeatureLayer,  EditTools, Query, QueryTask, SimpleMarkerSymbol, UniqueValueRenderer, graphicsUtils, on, Renderers) {
 
 
 		var mapVar
@@ -47,8 +48,20 @@ define([
 		 }
 
 				
+
+		 function getWRIA(featureSet) {
+		
+		 	var wriaExtent = graphicsUtils.graphicsExtent(featureSet.features);
+		 	map.setExtent(wriaExtent);
+			//var featureCount = 0;
+			//array.forEach(featureSet.features, function(feature) {
+			//	featureCount += 1;
+			//});
+
+		}
+
 		on(dom.byId('calcStuff'), 'click', function(){
-				var queryTask = new QueryTask(hrcdLayer.url);
+				var queryTask = new QueryTask(hrcd11Layer.url);
 				var query = new Query();
 				query.where = 'ChangeAgentCode = ' + 5 + 'And WRIAnumber = ' + dom.byId('wrianm').value;
 				query.returnGeometry = false;
@@ -57,7 +70,16 @@ define([
 		});
 
 
-
+		on(dom.byId('zoomToWria'), 'click', function(){
+				var queryTask = new QueryTask(hrcd11Layer.url);
+				var query = new Query();
+				query.where = 'WRIAnumber = ' + dom.byId('wrianm').value;
+				query.returnGeometry = true;
+				console.log('query is :' + query.where);
+				queryTask.execute(query).then(getWRIA, onError);
+				hrcd09Layer.setDefinitionExpression('WRIAnumber = ' + dom.byId('wrianm').value);
+				hrcd11Layer.setDefinitionExpression('WRIAnumber = ' + dom.byId('wrianm').value);
+		});
 
 
 		on(dom.byId('zoom'), 'change', function(e){
@@ -70,7 +92,8 @@ define([
 
 
 		
-		var hrcdLayer = map.getLayer('hrcd');
+		var hrcd11Layer = map.getLayer('hrcd11');
+		var hrcd09Layer = map.getLayer('hrcd09');
 		var ugaLayer = map.getLayer('uga');
 		var naip2009Layer = map.getLayer('naip2009');
 		var naip2011Layer = map.getLayer('naip2011');
@@ -79,10 +102,11 @@ define([
 		//var nhdFlowLayer = map.getLayer('nhdFlow');
 		var ecyBufferLayer = map.getLayer('ecyBuffer');
 
-			var renderer = new UniqueValueRenderer(Renderers.uvrHRCD);
+			var renderer09 = new UniqueValueRenderer(Renderers.uvrHRCD09);
+			var renderer11 = new UniqueValueRenderer(Renderers.uvrHRCD11);
 
-			hrcdLayer.setRenderer(renderer);
-
+			hrcd11Layer.setRenderer(renderer11);
+			hrcd09Layer.setRenderer(renderer09);
 
 			on(dom.byId('uga_layer'), 'change', function(e){
 			var ugaCheckBox = e.target.checked;
@@ -94,13 +118,23 @@ define([
 			}
 			});
 
-			on(dom.byId('hrcd0911_layer'), 'change', function(e){
+			on(dom.byId('hrcd11_layer'), 'change', function(e){
 			var hrcdCheckBox = e.target.checked;
 			//console.log('hrcdcheckBox value is ' + hrcdCheckBox);
 			if (hrcdCheckBox == true) {
-				hrcdLayer.show();
+				hrcd11Layer.show();
 			} else {
-				hrcdLayer.hide();
+				hrcd11Layer.hide();
+			}
+			});
+
+			on(dom.byId('hrcd09_layer'), 'change', function(e){
+			var hrcdCheckBox = e.target.checked;
+			//console.log('hrcdcheckBox value is ' + hrcdCheckBox);
+			if (hrcdCheckBox == true) {
+				hrcd09Layer.show();
+			} else {
+				hrcd09Layer.hide();
 			}
 			});
 

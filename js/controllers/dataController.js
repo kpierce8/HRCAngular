@@ -32,7 +32,7 @@ angular.module('hrcdApp').controller('dataCtrl',
 	appCtrl.init({
 			elem: 'mapDiv',
 			mapOptions: {
-				basemap: 'gray',
+				basemap: 'hybrid',
 				center: $scope.center,
 				zoom: $scope.zoom,
 				infoWindow: popup

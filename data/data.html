@@ -26,9 +26,12 @@
 <h3>A miscellaneous map div, data visualization coming soon, still heavily in development</h3>
 <label for="zoom">Zoom</label><input id="zoom" ng-model="zoom" type="text"> 
 <p>Map zoom is {{ zoom}} and map test value is {{ test }} and test2 is {{ test4 }} or {{ test3 }}</p>
-<label for="wrianm">WRIA</label><input type="text" id="wrianm" value="1">
+<label for="wrianm">WRIA</label><input type="text" id="wrianm" value="2">
 <button id="calcStuff">Calculate</button><p id="calcOutput"></p>
 <button id="zoomToWria" class="btn btn-info">Zoom to WRIA</button>
+<!-- <button id="updateGraph" class="btn btn-info">Update graph</button> -->
+
+
 </br>
 
 
@@ -54,6 +57,7 @@
 </div> -->
 
 <h4>Show NAIP data</h4>
+  <label class="checkbox-inline"><input type="checkbox" id="naip2006_layer" value="false">NAIP 2006</label>
   <label class="checkbox-inline"><input type="checkbox" id="naip2009_layer" value="false">NAIP 2009</label>
   <label class="checkbox-inline"><input type="checkbox" id="naip2011_layer" value="false">NAIP 2011</label>
   <label class="checkbox-inline"><input type="checkbox" id="naip2013_layer" value="false">NAIP 2013</label>

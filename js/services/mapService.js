@@ -3,12 +3,13 @@ define([
 	'dojo/dom',
 	'esri/layers/FeatureLayer',
 	'esri/layers/ArcGISImageServiceLayer',
+	"esri/layers/ArcGISTiledMapServiceLayer",
 	'esri/renderers/SimpleRenderer',
 	"esri/dijit/Popup", 
 	"esri/dijit/PopupTemplate",
 	"esri/InfoTemplate",
 	'utils/symbolUtil']
-	, function(on, dom, FeatureLayer, ArcGISImageServiceLayer, SimpleRenderer, Popup, PopupTemplate, InfoTemplate, symbolUtil) {
+	, function(on, dom, FeatureLayer, ArcGISImageServiceLayer, ArcGISTiledMapServiceLayer, SimpleRenderer, Popup, PopupTemplate, InfoTemplate, symbolUtil) {
 		function _loadServices(config){
 
 		
@@ -30,6 +31,11 @@ define([
 			var naip2013 = 'http://wagda.lib.washington.edu:6080/arcgis/rest/services/Imagery_services/NAIP_2013/ImageServer'
 			var naip2011 = 'http://wagda.lib.washington.edu:6080/arcgis/rest/services/Imagery_services/NAIP_2011/ImageServer'
 			var naip2009 = 'http://wagda.lib.washington.edu:6080/arcgis/rest/services/Imagery_services/NAIP_2009/ImageServer'
+
+			var naip2006 = 'http://geoservices.wa.gov/arcgis/rest/services/CachedServices/Statewide_NAIP_2006_18in_color_wm_cache/MapServer'
+			//var naip2006 = 'http://wagda.lib.washington.edu:6080/arcgis/rest/services/Imagery_services/NAIP_2006/ImageServer'
+
+
 			var layers = [];
 
 			// var	requestLayer = new FeatureLayer(REQUEST_URL, {
@@ -58,14 +64,16 @@ define([
 				id: 'hrcd11',
 				outFields: ['*'],
 				infoTemplate: hrcdInfoTemplate,
-				visible: false
+				visible: false,
+				maxRecordCount: 10000
 			});
 
 			var hrcd09Layer = new FeatureLayer(HRCD09_URL, {
 				id: 'hrcd09',
 				outFields: ['*'],
 				infoTemplate: hrcdInfoTemplate,
-				visible: false
+				visible: false,
+				maxRecordCount: 10000
 			});
 
  			var ugaLayer = new FeatureLayer(ugaURL, {
@@ -89,6 +97,11 @@ define([
  			});
 			var naip2009Layer = new ArcGISImageServiceLayer(naip2009, {
  				id: 'naip2009',
+ 				visible: false
+ 			});
+
+			var naip2006Layer = new ArcGISTiledMapServiceLayer(naip2006, {
+ 				id: 'naip2006',
  				visible: false
  			});
 
@@ -127,6 +140,7 @@ define([
 	layers.push(hrcd11Layer);
 	layers.push(hrcd09Layer);
 	layers.push(ugaLayer);
+	layers.push(naip2006Layer);
 	layers.push(naip2009Layer);
 	layers.push(naip2011Layer);
 	layers.push(naip2013Layer);

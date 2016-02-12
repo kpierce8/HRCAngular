@@ -33,7 +33,7 @@ define([
 
 
 		function sumsByCategory(featureSet) {
-			sumArray = {};
+			var sumArray = {};
 			array.forEach(featureSet.features, function(feature){
 				if (sumArray[feature.attributes.ChangeAgentName] > 0){
 					sumArray[feature.attributes.ChangeAgentName] += feature.attributes.AreaAcres;
@@ -42,7 +42,24 @@ define([
 				}
 			});
 			console.log(sumArray);
-			return sumArray
+			
+
+			d3.select("body")
+				.selectAll("#graph1")
+				.data(d3.entries(sumArray))
+				.enter()
+				.append("div")
+				.attr("class","bar")
+				.style("width", "50px")
+				.style("height", function(d){
+					var barHeight = d.value;
+					console.log("key: " + d.key + " and value: " + d.value);
+					return barHeight + "px";
+				});
+			//var sumAcres2 = d3.sum(sumArray);
+			//console.log("total area from featureArray is " + sumAcres2);
+
+			//return sumArray
 		}
 		
 
@@ -85,17 +102,29 @@ define([
 				featureArray.push(featureData);
 			});
 			//console.log("featureSet.features is a " + featureSet.features.Attributes.AreaAcres);
-			var sumAcres = d3.sum(featureSet.features.AreaAcres);
-			console.log("total area is " + sumAcres);
+			//var sumAcres = d3.sum(featureSet.features.AreaAcres);
+			//console.log("total area is " + sumAcres);
 			
 
 		}
+
+
+		// on(dom.byId('updateGraph'), 'click', function(){
+		// 		var queryTask = new QueryTask(hrcd11Layer.url);
+		// 		var query = new Query();
+		// 		query.outFields = ["WRIAnumber", "AreaAcres", "ChangeAgentCode", "ChangeAgentName", "TotalChangePercent", "TreeDecreasePercent", "ImperviousIncreasePercent", "SemiperviousIncreasePercent"];
+		// 		query.where = 'ChangeAgentCode > ' + 0 + 'And WRIAnumber = ' + dom.byId('wrianm').value;
+		// 		query.returnGeometry = false;
+		// 		console.log('query is :' + query.where);
+		// 		queryTask.execute(query).then(sumsByCategory, onError);
+		// });
+
 
 		on(dom.byId('calcStuff'), 'click', function(){
 				var queryTask = new QueryTask(hrcd11Layer.url);
 				var query = new Query();
 				query.outFields = ["WRIAnumber", "AreaAcres", "ChangeAgentCode", "ChangeAgentName", "TotalChangePercent", "TreeDecreasePercent", "ImperviousIncreasePercent", "SemiperviousIncreasePercent"];
-				query.where = 'ChangeAgentCode > ' + 0 + 'And WRIAnumber = ' + dom.byId('wrianm').value;
+				query.where = 'ChangeAgentCode = ' + 5 + 'And WRIAnumber = ' + dom.byId('wrianm').value;
 				query.returnGeometry = false;
 				console.log('query is :' + query.where);
 				queryTask.execute(query).then(getChangeAgentCounts, onError);
@@ -127,6 +156,7 @@ define([
 		var hrcd11Layer = map.getLayer('hrcd11');
 		var hrcd09Layer = map.getLayer('hrcd09');
 		var ugaLayer = map.getLayer('uga');
+		var naip2006Layer = map.getLayer('naip2006');
 		var naip2009Layer = map.getLayer('naip2009');
 		var naip2011Layer = map.getLayer('naip2011');
 		var naip2013Layer = map.getLayer('naip2013');
@@ -192,7 +222,7 @@ define([
 			}
 			});
 
-				on(dom.byId('naip2013_layer'), 'change', function(e){
+			on(dom.byId('naip2013_layer'), 'change', function(e){
 			var hrcdCheckBox = e.target.checked;
 			//console.log('hrcdcheckBox value is ' + hrcdCheckBox);
 			if (hrcdCheckBox == true) {
@@ -211,6 +241,17 @@ define([
 				
 			} else {
 				naip2015Layer.hide();
+			}
+			});
+
+			on(dom.byId('naip2006_layer'), 'change', function(e){
+			var hrcdCheckBox = e.target.checked;
+			//console.log('hrcdcheckBox value is ' + hrcdCheckBox);
+			if (hrcdCheckBox == true) {
+				naip2006Layer.show();
+				
+			} else {
+				naip2006Layer.hide();
 			}
 			});
 

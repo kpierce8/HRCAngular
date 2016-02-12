@@ -32,15 +32,41 @@ define([
 		//var markerSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10, null, new Color([50,150,100]));
 
 
+		function sumsByCategory(featureSet) {
+			sumArray = {};
+			array.forEach(featureSet.features, function(feature){
+				if (sumArray[feature.attributes.ChangeAgentName] > 0){
+					sumArray[feature.attributes.ChangeAgentName] += feature.attributes.AreaAcres;
+				} else {
+					sumArray[feature.attributes.ChangeAgentName] = feature.attributes.AreaAcres;
+				}
+			});
+			console.log(sumArray);
+			return sumArray
+		}
+		
+
+
 		//http://dojotoolkit.org/reference-guide/1.10/dojo/_base/array.html
 		function getChangeAgentCounts(featureSet) {
+			sumsByCategory(featureSet);
 			var featureCount = 0;
+			var featureArray = [];
 			array.forEach(featureSet.features, function(feature) {
 				featureCount += 1;
+				//featureData = ;
+				featureArray.push({"AreaAcres" : feature.attributes.AreaAcres, "ChangeAgentCode": feature.attributes.ChangeAgentCode});
+			//	console.log("feature attributes are" + feature.attributes.AreaAcres);
 			});
 			var p = dom.byId('calcOutput')
 			html.set(p,"There are " + featureCount + " redevelopment polygons in wria " + dom.byId('wrianm').value);
-			console.log("feature count is " + featureCount);
+			console.log(featureArray);
+			//var sumAcres = d3.sum(featureSet.features.AreaAcres);
+			//console.log("total area from featureSet is " + sumAcres);
+			//var sumAcres2 = d3.sum(featureArray.AreaAcres);
+			//console.log("total area from featureArray is " + sumAcres2);
+			console.log("feature array is an array: " + Array.isArray(featureArray));
+			console.log("featureSet is an array: " + Array.isArray(featureSet.features));
 		}
 
 		 function onError(error){
@@ -53,17 +79,23 @@ define([
 		
 		 	var wriaExtent = graphicsUtils.graphicsExtent(featureSet.features);
 		 	map.setExtent(wriaExtent);
-			//var featureCount = 0;
-			//array.forEach(featureSet.features, function(feature) {
-			//	featureCount += 1;
-			//});
+			var featureArray = [];
+			array.forEach(featureSet.features, function(feature) {
+				featureData = {"AreaAcres" : feature.attributes.AreaAcres, "ChangeAgentCode": feature.attributes.ChangeAgentCode};
+				featureArray.push(featureData);
+			});
+			//console.log("featureSet.features is a " + featureSet.features.Attributes.AreaAcres);
+			var sumAcres = d3.sum(featureSet.features.AreaAcres);
+			console.log("total area is " + sumAcres);
+			
 
 		}
 
 		on(dom.byId('calcStuff'), 'click', function(){
 				var queryTask = new QueryTask(hrcd11Layer.url);
 				var query = new Query();
-				query.where = 'ChangeAgentCode = ' + 5 + 'And WRIAnumber = ' + dom.byId('wrianm').value;
+				query.outFields = ["WRIAnumber", "AreaAcres", "ChangeAgentCode", "ChangeAgentName", "TotalChangePercent", "TreeDecreasePercent", "ImperviousIncreasePercent", "SemiperviousIncreasePercent"];
+				query.where = 'ChangeAgentCode > ' + 0 + 'And WRIAnumber = ' + dom.byId('wrianm').value;
 				query.returnGeometry = false;
 				console.log('query is :' + query.where);
 				queryTask.execute(query).then(getChangeAgentCounts, onError);

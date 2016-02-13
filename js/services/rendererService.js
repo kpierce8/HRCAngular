@@ -10,9 +10,9 @@ define([
 
       var outline09 = [200, 100, 100, 255];
       var outline11 = [100, 100, 200, 255];
-      var devColor = [255, 0, 0, 128];
-      var forestryColor = [0, 255, 0, 128];
-      var treeColor = [100, 255, 100, 128];
+      var devColor = [255, 0, 0, 75];
+      var forestryColor = [0, 255, 0, 75];
+      var treeColor = [100, 255, 100, 75];
 
 
 			var uvrHRCD09 = {"type" : "uniqueValue",
@@ -147,7 +147,7 @@ var uvrHRCD11 = {"type" : "uniqueValue",
         {
         "value": 5,
             "symbol": {
-              "color": [90, 0, 55, 128],
+              "color": [90, 0, 55, 75],
               "outline": {
                   "color": outline11,
                   "width": 1,

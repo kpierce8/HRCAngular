@@ -140,6 +140,7 @@ define([
 				queryTask.execute(query).then(getWRIA, onError);
 				hrcd09Layer.setDefinitionExpression('WRIAnumber = ' + dom.byId('wrianm').value);
 				hrcd11Layer.setDefinitionExpression('WRIAnumber = ' + dom.byId('wrianm').value);
+				hrcd13Layer.setDefinitionExpression('WRIAnumber = ' + dom.byId('wrianm').value);
 		});
 
 
@@ -155,6 +156,7 @@ define([
 		
 		var hrcd11Layer = map.getLayer('hrcd11');
 		var hrcd09Layer = map.getLayer('hrcd09');
+		var hrcd13Layer = map.getLayer('hrcd13');
 		var ugaLayer = map.getLayer('uga');
 		var naip2006Layer = map.getLayer('naip2006');
 		var naip2009Layer = map.getLayer('naip2009');
@@ -166,9 +168,11 @@ define([
 
 			var renderer09 = new UniqueValueRenderer(Renderers.uvrHRCD09);
 			var renderer11 = new UniqueValueRenderer(Renderers.uvrHRCD11);
+			var renderer13 = new UniqueValueRenderer(Renderers.uvrHRCD13);
 
 			hrcd11Layer.setRenderer(renderer11);
 			hrcd09Layer.setRenderer(renderer09);
+			hrcd13Layer.setRenderer(renderer13);
 
 			on(dom.byId('uga_layer'), 'change', function(e){
 			var ugaCheckBox = e.target.checked;
@@ -177,6 +181,18 @@ define([
 				ugaLayer.show();
 			} else {
 				ugaLayer.hide();
+			}
+			});
+
+
+
+			on(dom.byId('hrcd13_layer'), 'change', function(e){
+			var hrcdCheckBox = e.target.checked;
+			//console.log('hrcdcheckBox value is ' + hrcdCheckBox);
+			if (hrcdCheckBox == true) {
+				hrcd13Layer.show();
+			} else {
+				hrcd13Layer.hide();
 			}
 			});
 

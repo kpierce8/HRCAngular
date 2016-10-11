@@ -10,6 +10,7 @@ define([
 
       var outline09 = [200, 100, 100, 255];
       var outline11 = [100, 100, 200, 255];
+      var outline13 = [100, 200, 100, 255];
       var devColor = [255, 0, 0, 75];
       var forestryColor = [0, 255, 0, 75];
       var treeColor = [100, 255, 100, 75];
@@ -160,9 +161,81 @@ var uvrHRCD11 = {"type" : "uniqueValue",
         }]
       }
 
+var uvrHRCD13 = {"type" : "uniqueValue",
+      "field1":"CngAgent",
+      "defaultSymbol" : {
+        "color" : [100, 100, 100, 255],
+        "outline": {
+          "color" : outline13,
+          "width": 1,
+          "type" : "esriSLS",
+          "style": "esriSLSNull"
+          },
+        "type" : "esriSFS",
+        "style": "esriSFSNull"
+      },
+      "uniqueValueInfos" : [
+      {
+        "value": 1,
+            "symbol": {
+              "color": devColor,
+              "outline": {
+                  "color": outline13,
+                  "width": 1,
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid"
+                },
+             "type": "esriSFS",
+             "style": "esriSFSSolid"
+            }
+        },
+        {
+        "value": 2,
+            "symbol": {
+              "color": forestryColor,
+              "outline": {
+                  "color": outline13,
+                  "width": 1,
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid"
+                },
+             "type": "esriSFS",
+             "style": "esriSFSSolid"
+            }
+        },
+        {
+        "value": 3,
+            "symbol": {
+              "color": treeColor,
+              "outline": {
+                  "color": outline13,
+                  "width": 1,
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid"
+                },
+             "type": "esriSFS",
+             "style": "esriSFSSolid"
+            }
+        },
+        {
+        "value": 5,
+            "symbol": {
+              "color": [90, 0, 55, 75],
+              "outline": {
+                  "color": outline13,
+                  "width": 1,
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid"
+                },
+             "type": "esriSFS",
+             "style": "esriSFSSolid"
+            }
+        }]
+      }
 
 		renderers.uvrHRCD09 = uvrHRCD09;
     renderers.uvrHRCD11 = uvrHRCD11;
+    renderers.uvrHRCD13 = uvrHRCD13;
 
 		return renderers;
 

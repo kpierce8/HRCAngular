@@ -1,17 +1,31 @@
 <h1>Land Cover Modeling</h1>
+<img src="./methods/images/2009.jpg">
+
 <p>Land cover modeling is conducted using up to three stages. </p>
 <ol>
 	<li>pixel-level unsupervised classification</li>
 	<li>segment level classification and regression tree</li>
 	<li>rule-based class adjustments</li>
 </ol>
-<p>For the 2006-2009 and 2009-2011 time intervals, only the first stage (the pixel-level classification) was employed and only for the 2009 and 2011 image dates. The 2006 data lacked a near infra-red image band, which is important for land cover modeling.</p>
+<p>During the 2011-2013 change detection phase we conducted a preliminary land cover classification at the segment level. This process involved all three stages of land cover development. It is still a preliminary product because not all of the segments were successfully assessed through the final logic-based step. For the 2006-2009 and 2009-2011 time intervals, only the first stage (the pixel-level classification) was employed and only for the 2009 and 2011 image dates. The 2006 data lacked a near infra-red image band, which is important for land cover modeling.</p>
 </br>
 <h3>Unsupervised Classification</h3>
-<p>The unsupervised classification occurrs in two steps. </p>
-<img src="./methods/images/2009.jpg">
+<p>The unsupervised classification occurs in two steps. First, the 5-band data is seperated into vegetation and non-vegetation fractions by splitting on the derived band 5 (NDVI) values. Then each of the two fractions undergoes an unsupervised classification procedure using Erdas Imagine. This produces a predetermined number of spectrally different thematic classes. For this analysis we used 50 classes for the vegetation fraction and 25 for the non-vegetation fraction. After the unsupervised classification procedure and analyst reviews the individual statistically derived classes and assigns them to our subset of seven land cover classes. Those classes are:</p>
+<ul>
+<li>Bare ground</li>
+<li>Built/impervious surfaces</li>
+<li>Fine Vegetation- generally herbaceous/grass areas</li>
+<li>Medium Vegetation- generally shrubs or small trees</li>
+<li>Coarse Vegetation- generally medium or large trees</li>
+<li>Water or shadows</li>
+<li>Indeterminate</li>
+</ul>
+<p>This seven layer raster comprises our classified pixel layer. Due to the high spatial resolution on the NAIP data this leads to very mixed classifications in many areas resulting from issues like illumination differences of different sides of a tree crown. </p>
+
+
 
 <h3>Classification and Regression Tree</h3>
-<p></p>
+<p>Classification and regression trees are a set of statistical procedures employed when classifying data based on a set of attributes and a known set of training data. Unlike the pixel-level unsupervised classification above, the target of classification is a polygon consisting of many pixels. Attributes calculated from the population of pixels are used as polygon attributes and class assignments are for the whole polygon. </p>
+
 <h3>Expert-based rule system</h3>
-<p></p>
+<p>The final stage of our classification procedure is a set of expert rules. The first group of these rules is a simple comparison between the two independent classifications above. Whenever a polygon's proportion of pixel level classes is greater than 90% in agreement with the CART analysis, the polygon is labeled as that class. Subsequent rules dig deeper into possible attribute combinations, many including relative canopy height in order to move subgroups of polygons to a final classification stage.</p>

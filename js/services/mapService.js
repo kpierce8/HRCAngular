@@ -16,6 +16,10 @@ define([
 			var REQUEST_URL = 'http://services.arcgis.com/rcya3vExsaVBGUDp/arcgis/rest/services/testTrees/FeatureServer/0'
    			var HRCD11_URL = 'http://gispublic.dfw.wa.gov/arcgis/rest/services/ApplicationServices/PugetSoundHighResolutionChangeDetection/MapServer/1'
 			var HRCD09_URL = 'http://gispublic.dfw.wa.gov/arcgis/rest/services/ApplicationServices/PugetSoundHighResolutionChangeDetection/MapServer/0'
+			var HRCD13_URL = 'http://services.arcgis.com/rcya3vExsaVBGUDp/arcgis/rest/services/HRCD_2011_2013/FeatureServer/0'
+			var HRCD13_URLOLD = 'http://gispublic.dfw.wa.gov/arcgis/rest/services/HRCD_2011_2013/FeatureServer/0'
+		
+
 			var wa_countyURL = 'https://services.arcgis.com/jsIt88o09Q0r1j8h/arcgis/rest/services/StateBoundary/FeatureServer/0/query?outFields=*&where=&geometry={"xmin":-15181111.166244071,"ymin":5623514.765600957,"xmax":-11717596.540587086,"ymax":6357310.237138454,"spatialReference":{"wkid":102100}}'
 
 			var ugaURL = 'https://services.arcgis.com/6lCKYNJLvwTXqrmp/arcgis/rest/services/Urban_Growth_Areas/FeatureServer/0/query?outFields=*&where=1%3D1'
@@ -58,6 +62,20 @@ define([
 			<br>Change Agent: ${ChangeAgentName}<br>Canopy Loss: ${TreeDecreasePercent}\
 			<br>Increased impervious surface: ${ImperviousIncreasePercent}\
 			<br>Acres: ${AreaAcres}<br>WRIA: ${WRIAnumber}<br>Change period ${StartYear} to ${EndYear}");
+
+var hrcd13InfoTemplate = new InfoTemplate("Change attributes", "Change percentage: ${PercentC}\
+			<br>Change Agent: ${CngAgnNm}<br>Canopy Loss: ${TreeDec}\
+			<br>Increased impervious surface: ${ImpervInc}\
+			<br>Acres: ${Acres}<br>WRIA: ${WRIA}<br>Change period ${StartYR} to ${EndYr}");
+
+
+			var hrcd13Layer = new FeatureLayer(HRCD13_URL, {
+				id: 'hrcd13',
+				outFields: ['*'],
+				infoTemplate: hrcd13InfoTemplate,
+				visible: false,
+				maxRecordCount: 10000
+			});
 
 
 			var hrcd11Layer = new FeatureLayer(HRCD11_URL, {
@@ -127,9 +145,11 @@ define([
 				if (changeAgent == 0) {
 					hrcd11Layer.setDefinitionExpression('ChangeAgentCode > ' + changeAgent);
 					hrcd09Layer.setDefinitionExpression('ChangeAgentCode > ' + changeAgent);
+					hrcd13Layer.setDefinitionExpression('CngAgent > ' + changeAgent);
 				} else {
 				hrcd09Layer.setDefinitionExpression('ChangeAgentCode = ' + changeAgent);
 				hrcd11Layer.setDefinitionExpression('ChangeAgentCode = ' + changeAgent);
+				hrcd13Layer.setDefinitionExpression('CngAgent = ' + changeAgent);
 				}
 			}
 		});
@@ -137,6 +157,7 @@ define([
 			
 		
 	//layers.push(requestLayer);
+	layers.push(hrcd13Layer);
 	layers.push(hrcd11Layer);
 	layers.push(hrcd09Layer);
 	layers.push(ugaLayer);

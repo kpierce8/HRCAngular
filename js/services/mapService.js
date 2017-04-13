@@ -36,8 +36,8 @@ define([
 			var naip2011 = 'http://wagda.lib.washington.edu:6080/arcgis/rest/services/Imagery_services/NAIP_2011/ImageServer'
 			var naip2009 = 'http://wagda.lib.washington.edu:6080/arcgis/rest/services/Imagery_services/NAIP_2009/ImageServer'
 
-			var naip2006 = 'http://geoservices.wa.gov/arcgis/rest/services/CachedServices/Statewide_NAIP_2006_18in_color_wm_cache/MapServer'
-			//var naip2006 = 'http://wagda.lib.washington.edu:6080/arcgis/rest/services/Imagery_services/NAIP_2006/ImageServer'
+			//var naip2006 = 'http://geoservices.wa.gov/arcgis/rest/services/CachedServices/Statewide_NAIP_2006_18in_color_wm_cache/MapServer'
+			var naip2006 = 'http://wagda.lib.washington.edu:6080/arcgis/rest/services/Imagery_services/NAIP_2006/ImageServer'
 
 
 			var layers = [];
@@ -165,7 +165,7 @@ var hrcd13InfoTemplate = new InfoTemplate("Change attributes", "Change percentag
 	layers.push(naip2009Layer);
 	layers.push(naip2011Layer);
 	layers.push(naip2013Layer);
-	layers.push(naip2015Layer);
+//	layers.push(naip2015Layer);
 //	layers.push(nhdFlowLayer);
 	layers.push(ecyBufferLayer);
 	return layers;
